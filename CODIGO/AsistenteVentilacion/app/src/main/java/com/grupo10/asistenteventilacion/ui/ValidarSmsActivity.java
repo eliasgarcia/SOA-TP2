@@ -1,4 +1,4 @@
-package com.grupo10.asistenteventilacion;
+package com.grupo10.asistenteventilacion.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.grupo10.asistenteventilacion.R;
 
 public class ValidarSmsActivity extends AppCompatActivity {
 
@@ -41,9 +43,7 @@ public class ValidarSmsActivity extends AppCompatActivity {
     private void verificarSmsCodeYAbrirLoginActivity(View v){
         String codigo = txtCodigo.getText().toString();
         String mensaje;
-        if(codigoSMS == null){
-            mensaje = "El código sms expiró.";
-        }else if(codigo.isEmpty()){
+        if(codigo.isEmpty()){
             mensaje = "Debe ingresar el codigo que llego por sms";
         }else if(codigoSMS.equals(codigo) || "1234".equals(codigo)){
             Intent intent = new Intent(v.getContext(), LoginActivity.class);

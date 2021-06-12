@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.grupo10.asistenteventilacion">
+
     <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -9,17 +12,21 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name="com.grupo10.asistenteventilacion.EnviarSmsActivity">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ui.ConfirmarIngestaActivity"></activity>
+        <activity android:name=".ui.EditarIngestaActivity" />
+        <activity android:name=".ui.MainActivity" />
+        <activity android:name=".ui.EnviarSmsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.grupo10.asistenteventilacion.ValidarSmsActivity"></activity>
-        <activity android:name="com.grupo10.asistenteventilacion.RegistroActivity" />
-        <activity android:name="com.grupo10.asistenteventilacion.LoginActivity"></activity>
+        <activity android:name=".ui.ValidarSmsActivity" />
+        <activity android:name=".ui.RegistroActivity" />
+        <activity android:name=".ui.LoginActivity" />
     </application>
 
 </manifest>

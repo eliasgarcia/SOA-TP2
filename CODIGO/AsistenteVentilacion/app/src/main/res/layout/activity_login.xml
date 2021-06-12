@@ -24,8 +24,8 @@
     <Button
         android:id="@+id/btnLogin"
         style="@style/Widget.AppCompat.Button"
-        android:layout_width="147dp"
-        android:layout_height="45dp"
+        android:layout_width="145dp"
+        android:layout_height="62dp"
         android:layout_marginTop="44dp"
         android:backgroundTint="#00532727"
         android:text="LOGIN"
@@ -34,14 +34,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.534"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtContraseniaNueva" />
+        app:layout_constraintTop_toBottomOf="@+id/txtContraseniaLogin" />
 
     <EditText
-        android:id="@+id/txtEmailNuevo"
+        android:id="@+id/txtEmailLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:ems="10"
+        android:hint="Email"
         android:inputType="textEmailAddress"
         android:textColor="#0A0A0E"
         android:textSize="24sp"
@@ -51,7 +52,7 @@
         app:layout_constraintTop_toBottomOf="@+id/type" />
 
     <EditText
-        android:id="@+id/txtContraseniaNueva"
+        android:id="@+id/txtContraseniaLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
@@ -63,7 +64,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.55"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEmailNuevo" />
+        app:layout_constraintTop_toBottomOf="@+id/txtEmailLogin" />
 
     <TextView
         android:id="@+id/textView5"
@@ -96,5 +97,15 @@
         app:layout_constraintHorizontal_bias="0.127"
         app:layout_constraintStart_toEndOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+
+    <ProgressBar
+        android:id="@+id/pgbLogin"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.grupo10.asistenteventilacion;
+package com.grupo10.asistenteventilacion.ui;
 
 import android.Manifest;
 import android.content.Intent;
@@ -7,14 +7,18 @@ import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+
+import com.grupo10.asistenteventilacion.R;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -24,11 +28,11 @@ public class EnviarSmsActivity extends AppCompatActivity {
     private String  codigoSMS;
     private final static int MIN_CODE = 100000;
     private final static int MAX_CODE = 999999;
-    EditText txtNroCelular;
-    Button btnEnviarSms;
-    Intent intent;
-    Bundle bundle = new Bundle();
-
+    private EditText txtNroCelular;
+    private Button btnEnviarSms;
+    private Intent intent;
+    private Bundle bundle = new Bundle();
+    private ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,8 +41,17 @@ public class EnviarSmsActivity extends AppCompatActivity {
         txtNroCelular = (EditText) findViewById(R.id.txtNroCelular);
         btnEnviarSms = (Button) findViewById(R.id.btnEnviarSms);
         btnEnviarSms.setOnClickListener(botonesListeners);
+        progressBar = findViewById(R.id.pgbEnviarSms);
+        progressBar.setVisibility(View.INVISIBLE);
         Log.i("Ejecuto","Ejecuto onCreate");
 
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        progressBar.setVisibility(View.INVISIBLE);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
     }
 
     private View.OnClickListener botonesListeners = new View.OnClickListener()
@@ -58,6 +71,9 @@ public class EnviarSmsActivity extends AppCompatActivity {
 
     private void enviarSmsYAbrirActivityValidarSms(){
         if(esUnNroCelularValido() && tienePermisoParaEnviarSms()){
+            progressBar.setVisibility(View.VISIBLE);
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                    WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
             enviarSms();
             abrirActivityValidarSms();
         }
