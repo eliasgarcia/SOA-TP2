@@ -1,7 +1,7 @@
-package com.grupo10.asistenteventilacion.client;
+package com.grupo10.asistenteingesta.client;
 
-import com.grupo10.asistenteventilacion.dto.UsuarioDTO;
-import com.grupo10.asistenteventilacion.response.RegistroResponse;
+import com.grupo10.asistenteingesta.dto.UsuarioDTO;
+import com.grupo10.asistenteingesta.response.RegistroResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

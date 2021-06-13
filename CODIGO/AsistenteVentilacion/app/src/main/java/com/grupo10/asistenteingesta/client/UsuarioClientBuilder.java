@@ -1,4 +1,4 @@
-package com.grupo10.asistenteventilacion.client;
+package com.grupo10.asistenteingesta.client;
 
 import retrofit2.converter.gson.GsonConverterFactory;
 

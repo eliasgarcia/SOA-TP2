@@ -1,4 +1,4 @@
-package com.grupo10.asistenteventilacion.ui;
+package com.grupo10.asistenteingesta.ui;
 
 import android.Manifest;
 import android.content.Intent;
@@ -18,7 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.grupo10.asistenteventilacion.R;
+import com.grupo10.asistenteingesta.R;
 
 import java.util.concurrent.ThreadLocalRandom;
 

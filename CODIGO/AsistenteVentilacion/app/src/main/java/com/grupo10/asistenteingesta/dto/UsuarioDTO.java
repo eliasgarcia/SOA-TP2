@@ -1,27 +1,15 @@
-package com.grupo10.asistenteventilacion.dto;
-
-import com.grupo10.asistenteventilacion.modelo.Usuario;
+package com.grupo10.asistenteingesta.dto;
 
 public class UsuarioDTO {
 
-    private String env = "TEST"; //TEST” |”PROD”
+    private String env = "PROD"; //TEST” |”PROD”
     private String name;
     private String lastname;
     private Integer dni;
     private String email;
     private String password;
-    private Integer commission;
-    private Integer group;
-
-    public UsuarioDTO(Usuario usuario){
-        this.name = usuario.getNombre();
-        this.lastname = usuario.getApellido();
-        this.dni = usuario.getDni();
-        this.email = usuario.getEmail();
-        this.password = usuario.getContrasenia();
-        this.commission = usuario.getComision();
-        this.group = usuario.getGrupo();
-    }
+    private Integer commission = 3900;
+    private Integer group = 5;
 
     public UsuarioDTO(){
     }

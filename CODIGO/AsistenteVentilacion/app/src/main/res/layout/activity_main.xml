@@ -7,107 +7,146 @@
     tools:context=".ui.MainActivity">
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="199dp"
-        android:layout_height="36dp"
+        android:id="@+id/btnEditarMedicamento"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="79dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="24dp"
         android:text="Editar"
-        tools:layout_editor_absoluteX="98dp"
-        tools:layout_editor_absoluteY="256dp" />
+        app:layout_constraintEnd_toStartOf="@+id/button5"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="314dp"
         android:layout_height="224dp"
         android:text="Scroll layput con hisotorial"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="414dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.618"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView25"
+        app:layout_constraintVertical_bias="0.593" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Medicamento"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="49dp" />
+        android:layout_marginTop="52dp"
+        android:text="MEDICAMENTO"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.071"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nombre:"
-        tools:layout_editor_absoluteX="44dp"
-        tools:layout_editor_absoluteY="82dp" />
+        android:id="@+id/lblMedicamentoFrecuencia"
+        android:layout_width="158dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="12dp"
+        android:text="Frecuencia: -"
+        app:layout_constraintEnd_toStartOf="@+id/btnEditarMedicamento"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblMedicamentoNombre" />
 
     <TextView
-        android:id="@+id/textView21"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nombre:"
-        tools:layout_editor_absoluteX="51dp"
-        tools:layout_editor_absoluteY="183dp" />
+        android:id="@+id/lblBebidaFrecuencia"
+        android:layout_width="158dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:text="Frecuencia: -"
+        app:layout_constraintEnd_toStartOf="@+id/btnEditarBebida"
+        app:layout_constraintHorizontal_bias="0.307"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblBebidaNombre" />
 
     <TextView
-        android:id="@+id/textView17"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="-"
-        tools:layout_editor_absoluteX="134dp"
-        tools:layout_editor_absoluteY="107dp" />
+        android:id="@+id/lblMedicamentoNombre"
+        android:layout_width="158dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="8dp"
+        android:text="Nombre: -"
+        app:layout_constraintEnd_toStartOf="@+id/btnEditarMedicamento"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <TextView
-        android:id="@+id/textView24"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="-"
-        tools:layout_editor_absoluteX="138dp"
-        tools:layout_editor_absoluteY="212dp" />
-
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="-"
-        tools:layout_editor_absoluteX="134dp"
-        tools:layout_editor_absoluteY="82dp" />
-
-    <TextView
-        android:id="@+id/textView22"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Agua"
-        tools:layout_editor_absoluteX="134dp"
-        tools:layout_editor_absoluteY="183dp" />
-
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Frecuencia:"
-        tools:layout_editor_absoluteX="43dp"
-        tools:layout_editor_absoluteY="107dp" />
-
-    <TextView
-        android:id="@+id/textView23"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Frecuencia:"
-        tools:layout_editor_absoluteX="51dp"
-        tools:layout_editor_absoluteY="212dp" />
+        android:id="@+id/lblBebidaNombre"
+        android:layout_width="155dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="68dp"
+        android:text="Nombre: -"
+        app:layout_constraintEnd_toStartOf="@+id/btnEditarBebida"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblMedicamentoFrecuencia" />
 
     <TextView
         android:id="@+id/textView18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bebida"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="148dp" />
+        android:layout_marginTop="40dp"
+        android:text="BEBIDA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblMedicamentoFrecuencia" />
 
     <TextView
         android:id="@+id/textView25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="112dp"
         android:text="Historial"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="318dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.136"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblBebidaFrecuencia" />
+
+    <Button
+        android:id="@+id/button5"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="16dp"
+        android:text="Eliminar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnEliminarMedicamento"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="88dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="240dp"
+        android:text="Eliminar"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button5"
+        app:layout_constraintVertical_bias="0.03" />
+
+    <Button
+        android:id="@+id/btnEditarBebida"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="84dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="240dp"
+        android:text="Editar"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintEnd_toStartOf="@+id/btnEliminarMedicamento"
+        app:layout_constraintTop_toBottomOf="@+id/btnEditarMedicamento"
+        app:layout_constraintVertical_bias="0.09" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

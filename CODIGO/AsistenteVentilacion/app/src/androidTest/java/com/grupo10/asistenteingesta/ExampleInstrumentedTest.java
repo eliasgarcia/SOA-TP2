@@ -1,4 +1,4 @@
-package com.grupo10.asistenteventilacion;
+package com.grupo10.asistenteingesta;
 
 import android.content.Context;
 

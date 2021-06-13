@@ -15,7 +15,7 @@
         tools:layout_editor_absoluteY="190dp" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnSiRealizoIngesta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Si"
@@ -23,7 +23,7 @@
         tools:layout_editor_absoluteY="290dp" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btnNoRealizoIngesta"
         android:layout_width="133dp"
         android:layout_height="51dp"
         android:text="NO"

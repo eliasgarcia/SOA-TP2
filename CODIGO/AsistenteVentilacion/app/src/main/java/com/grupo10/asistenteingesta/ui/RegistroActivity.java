@@ -1,4 +1,4 @@
-package com.grupo10.asistenteventilacion.ui;
+package com.grupo10.asistenteingesta.ui;
 
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -13,12 +13,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.grupo10.asistenteventilacion.R;
-import com.grupo10.asistenteventilacion.client.UsuarioClient;
-import com.grupo10.asistenteventilacion.client.UsuarioClientBuilder;
-import com.grupo10.asistenteventilacion.dto.UsuarioDTO;
-import com.grupo10.asistenteventilacion.modelo.Usuario;
-import com.grupo10.asistenteventilacion.response.RegistroResponse;
+import com.grupo10.asistenteingesta.R;
+import com.grupo10.asistenteingesta.client.UsuarioClient;
+import com.grupo10.asistenteingesta.client.UsuarioClientBuilder;
+import com.grupo10.asistenteingesta.dto.UsuarioDTO;
+import com.grupo10.asistenteingesta.response.RegistroResponse;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -113,13 +112,13 @@ public class RegistroActivity extends AppCompatActivity {
     }
 
     private UsuarioDTO obtenerUsuarioDTO(){
-        Usuario usuario = new Usuario();
-        usuario.setNombre(txtNombre.getText().toString());
-        usuario.setApellido(txtApellido.getText().toString());
-        usuario.setEmail(txtEmail.getText().toString());
-        usuario.setContrasenia(txtContrasenia.getText().toString());
-        usuario.setDni(Integer.valueOf(txtDNI.getText().toString()));
-        return new UsuarioDTO(usuario);
+        UsuarioDTO usuarioDTO = new UsuarioDTO();
+        usuarioDTO.setName(txtNombre.getText().toString());
+        usuarioDTO.setLastname(txtApellido.getText().toString());
+        usuarioDTO.setEmail(txtEmail.getText().toString());
+        usuarioDTO.setPassword(txtContrasenia.getText().toString());
+        usuarioDTO.setDni(Integer.valueOf(txtDNI.getText().toString()));
+        return usuarioDTO;
     }
     private void registrarUsuario(){
         progressBar.setVisibility(View.VISIBLE);

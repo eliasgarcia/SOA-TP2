@@ -1,4 +1,4 @@
-package com.grupo10.asistenteventilacion.ui;
+package com.grupo10.asistenteingesta.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.grupo10.asistenteventilacion.R;
+import com.grupo10.asistenteingesta.R;
 
 public class ValidarSmsActivity extends AppCompatActivity {
 
@@ -44,7 +44,7 @@ public class ValidarSmsActivity extends AppCompatActivity {
         String codigo = txtCodigo.getText().toString();
         String mensaje;
         if(codigo.isEmpty()){
-            mensaje = "Debe ingresar el codigo que llego por sms";
+            mensaje = "Debe ingresar el codigo que llegó por sms";
         }else if(codigoSMS.equals(codigo) || "1234".equals(codigo)){
             Intent intent = new Intent(v.getContext(), LoginActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);

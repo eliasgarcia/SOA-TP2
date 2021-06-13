@@ -1,11 +1,10 @@
-package com.grupo10.asistenteventilacion.ui;
+package com.grupo10.asistenteingesta.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -13,11 +12,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.grupo10.asistenteventilacion.R;
-import com.grupo10.asistenteventilacion.client.LoginClient;
-import com.grupo10.asistenteventilacion.client.LoginClientBuilder;
-import com.grupo10.asistenteventilacion.dto.LoginDTO;
-import com.grupo10.asistenteventilacion.response.LoginResponse;
+import com.grupo10.asistenteingesta.R;
+import com.grupo10.asistenteingesta.client.LoginClient;
+import com.grupo10.asistenteingesta.client.LoginClientBuilder;
+import com.grupo10.asistenteingesta.dto.LoginDTO;
+import com.grupo10.asistenteingesta.response.LoginResponse;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -102,9 +101,6 @@ public class LoginActivity extends AppCompatActivity {
                 if(camposValidos()){
                     login();
                 }
-                /*Intent intent = new Intent(v.getContext(), ValidarSmsActivity.class);
-                startActivity(intent);
-                 */
             }
         });
     }
@@ -126,7 +122,8 @@ public class LoginActivity extends AppCompatActivity {
                              }
                              LoginResponse loginResponse = response.body();
                              Toast.makeText(LoginActivity.this, "Login Exitoso" +loginResponse.getToken(), Toast.LENGTH_LONG).show();
-
+                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                             startActivity(intent);
                          }
 
                          @Override

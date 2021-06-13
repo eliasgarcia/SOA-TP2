@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.grupo10.asistenteventilacion">
+    package="com.grupo10.asistenteingesta">
 
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -14,8 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.ConfirmarIngestaActivity"></activity>
-        <activity android:name=".ui.EditarIngestaActivity" />
+        <activity android:name=".ui.EditarIngestaBebidaActivity"></activity>
+        <activity android:name=".ui.ConfirmarIngestaActivity" />
+        <activity android:name=".ui.EditarIngestaMedicamentoActivity" />
         <activity android:name=".ui.MainActivity" />
         <activity android:name=".ui.EnviarSmsActivity">
             <intent-filter>

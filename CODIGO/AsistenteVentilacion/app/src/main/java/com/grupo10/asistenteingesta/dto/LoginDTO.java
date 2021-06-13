@@ -1,4 +1,4 @@
-package com.grupo10.asistenteventilacion.dto;
+package com.grupo10.asistenteingesta.dto;
 
 public class LoginDTO {
 

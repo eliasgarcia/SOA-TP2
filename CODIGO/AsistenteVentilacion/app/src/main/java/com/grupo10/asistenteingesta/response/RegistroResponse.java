@@ -1,10 +1,11 @@
-package com.grupo10.asistenteventilacion.response;
+package com.grupo10.asistenteingesta.response;
 
 import com.google.gson.annotations.SerializedName;
 
-public class LoginResponse {
+public class RegistroResponse {
 
     private Boolean success;
+    private String env;
     private String token;
     @SerializedName("token_refresh")
     private String tokenRefresh;
@@ -16,6 +17,14 @@ public class LoginResponse {
 
     public void setSuccess(Boolean success) {
         this.success = success;
+    }
+
+    public String getEnv() {
+        return env;
+    }
+
+    public void setEnv(String env) {
+        this.env = env;
     }
 
     public String getToken() {
