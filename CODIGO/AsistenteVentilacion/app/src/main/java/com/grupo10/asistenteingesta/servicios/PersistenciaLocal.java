@@ -44,9 +44,9 @@ public class PersistenciaLocal {
         return JsonConverter.getUsuario(resultado);
     }
 
-    synchronized public void setUsuario(Usuario usuario) {
+    public void setUsuario(Usuario usuario) {
         editor.putString(KEY_USUARIO, JsonConverter.toJsonString(usuario));
-        editor.commit();
+        editor.apply();
     }
 
     public Ingesta getMedicamento() {
@@ -57,9 +57,9 @@ public class PersistenciaLocal {
         return JsonConverter.getIngesta(resultado);
     }
 
-    synchronized public void setMedicamento(Ingesta ingesta) {
+    public void setMedicamento(Ingesta ingesta) {
         editor.putString(KEY_MEDICAMENTO, JsonConverter.toJsonString(ingesta));
-        editor.commit();
+        editor.apply();
     }
 
     public Ingesta getBebida() {
@@ -70,9 +70,9 @@ public class PersistenciaLocal {
         return JsonConverter.getIngesta(resultado);
     }
 
-    synchronized public void setBebida(Ingesta ingesta) {
+    public void setBebida(Ingesta ingesta) {
         editor.putString(KEY_BEBIDA, JsonConverter.toJsonString(ingesta));
-        editor.commit();
+        editor.apply();
     }
 
     public Historial getHistorial() {
@@ -83,15 +83,25 @@ public class PersistenciaLocal {
         return JsonConverter.getHistorial(resultado);
     }
 
-    synchronized public void setHistorial(Historial historial) {
+    public void setHistorial(Historial historial) {
         editor.putString(KEY_HISTORIAL, JsonConverter.toJsonString(historial));
-        editor.commit();
+        editor.apply();
+    }
+
+    public void eliminarMedicamento() {
+        editor.remove(KEY_MEDICAMENTO);
+        editor.apply();
+    }
+
+    public void eliminarBebida() {
+        editor.remove(KEY_BEBIDA);
+        editor.apply();
     }
 
     //deberia limpiarse cuando ingresa un nuevo usuario;
     public void limpiar(){
         editor.clear();
-        editor.commit();
+        editor.apply();
     }
 
 }

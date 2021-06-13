@@ -76,7 +76,7 @@ public class EditarIngestaMedicamentoActivity extends AppCompatActivity {
             esValido = false;
         }
         if(TextUtils.isEmpty(txtMedicamentoNombre.getText())){
-            txtMedicamentoFrecuencia.setError("Debe ingresar un nombre.");
+            txtMedicamentoNombre.setError("Debe ingresar un nombre.");
             esValido = false;
         }
         return esValido;
