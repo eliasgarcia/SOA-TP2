@@ -1,7 +1,12 @@
 package com.grupo10.asistenteingesta.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
@@ -10,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.grupo10.asistenteingesta.broadcast.AlarmaReceiver;
 import com.grupo10.asistenteingesta.R;
 import com.grupo10.asistenteingesta.modelo.Ingesta;
 import com.grupo10.asistenteingesta.servicios.PersistenciaLocal;
@@ -65,6 +71,7 @@ public class EditarIngestaMedicamentoActivity extends AppCompatActivity {
             medicamento.setFrecuencia(Integer.parseInt(txtMedicamentoFrecuencia.getText().toString()));
             medicamento.setNombre(txtMedicamentoNombre.getText().toString());
             persistenciaLocal.setMedicamento(medicamento);
+            setAlarma();
             finish();
         }
     }
@@ -94,5 +101,16 @@ public class EditarIngestaMedicamentoActivity extends AppCompatActivity {
         progressBar.setVisibility(View.VISIBLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
                 WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+    }
+
+    public void setAlarma() {
+        long tiempoEnMilis = 5000; //5 segundos
+        Integer REQUEST_CODE = 303; //TODO
+        AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
+        Intent intent = new Intent(this, AlarmaReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, REQUEST_CODE, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime()
+                + tiempoEnMilis, pendingIntent);
+                //setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
     }
 }

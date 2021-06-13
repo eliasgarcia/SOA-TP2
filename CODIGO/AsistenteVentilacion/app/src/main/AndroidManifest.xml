@@ -14,7 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.EditarIngestaBebidaActivity"></activity>
+        <receiver
+            android:name=".broadcast.AlarmaReceiver"
+            android:enabled="true"
+            android:exported="true"></receiver>
+
+        <activity android:name=".ui.EditarIngestaBebidaActivity" />
         <activity android:name=".ui.ConfirmarIngestaActivity" />
         <activity android:name=".ui.EditarIngestaMedicamentoActivity" />
         <activity android:name=".ui.MainActivity" />
