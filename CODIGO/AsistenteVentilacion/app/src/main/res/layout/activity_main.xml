@@ -6,17 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
-    <Button
-        android:id="@+id/btnEditarMedicamento"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="79dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="24dp"
-        android:text="Editar"
-        app:layout_constraintEnd_toStartOf="@+id/btnEliminarMedicamento"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/textView4"
         android:layout_width="314dp"
@@ -42,31 +31,31 @@
 
     <TextView
         android:id="@+id/lblMedicamentoFrecuencia"
-        android:layout_width="158dp"
+        android:layout_width="180dp"
         android:layout_height="18dp"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="4dp"
         android:text="Frecuencia: -"
         app:layout_constraintEnd_toStartOf="@+id/btnEditarMedicamento"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.019"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblMedicamentoNombre" />
 
     <TextView
         android:id="@+id/lblBebidaFrecuencia"
-        android:layout_width="158dp"
+        android:layout_width="177dp"
         android:layout_height="20dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="4dp"
         android:text="Frecuencia: -"
         app:layout_constraintEnd_toStartOf="@+id/btnEditarBebida"
-        app:layout_constraintHorizontal_bias="0.307"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblBebidaNombre" />
 
     <TextView
         android:id="@+id/lblMedicamentoNombre"
-        android:layout_width="158dp"
+        android:layout_width="181dp"
         android:layout_height="18dp"
         android:layout_marginStart="36dp"
         android:layout_marginTop="8dp"
@@ -78,10 +67,10 @@
 
     <TextView
         android:id="@+id/lblBebidaNombre"
-        android:layout_width="155dp"
+        android:layout_width="177dp"
         android:layout_height="19dp"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="72dp"
         android:text="Nombre: -"
         app:layout_constraintEnd_toStartOf="@+id/btnEditarBebida"
         app:layout_constraintHorizontal_bias="0.0"
@@ -110,43 +99,44 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblBebidaFrecuencia" />
 
-    <Button
-        android:id="@+id/btnEliminarMedicamento"
-        style="@style/Widget.AppCompat.Button.Borderless"
+    <ImageButton
+        android:id="@+id/btnEditarMedicamento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="16dp"
-        android:text="Eliminar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintEnd_toStartOf="@+id/btnEliminarMedicamento"
+        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        app:srcCompat="@drawable/ic_action_editar" />
 
-    <Button
-        android:id="@+id/btnEliminarBebida"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="88dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="240dp"
-        android:text="Eliminar"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnEliminarMedicamento"
-        app:layout_constraintVertical_bias="0.03" />
-
-    <Button
+    <ImageButton
         android:id="@+id/btnEditarBebida"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="84dp"
-        android:layout_height="47dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="68dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="240dp"
-        android:text="Editar"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        android:layout_marginEnd="12dp"
         app:layout_constraintEnd_toStartOf="@+id/btnEliminarBebida"
         app:layout_constraintTop_toBottomOf="@+id/btnEditarMedicamento"
-        app:layout_constraintVertical_bias="0.09" />
+        app:srcCompat="@drawable/ic_action_editar" />
+
+    <ImageButton
+        android:id="@+id/btnEliminarMedicamento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        app:srcCompat="@drawable/ic_action_eliminar" />
+
+    <ImageButton
+        android:id="@+id/btnEliminarBebida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnEliminarMedicamento"
+        app:srcCompat="@drawable/ic_action_eliminar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
