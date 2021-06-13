@@ -10,63 +10,66 @@
         android:id="@+id/textView20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
         android:text="Realizaste la ingesta?"
-        tools:layout_editor_absoluteX="126dp"
-        tools:layout_editor_absoluteY="190dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.44"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView28" />
 
     <Button
         android:id="@+id/btnSiRealizoIngesta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
         android:text="Si"
-        tools:layout_editor_absoluteX="50dp"
-        tools:layout_editor_absoluteY="290dp" />
+        app:layout_constraintEnd_toStartOf="@+id/btnNoRealizoIngesta"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
     <Button
         android:id="@+id/btnNoRealizoIngesta"
         android:layout_width="133dp"
         android:layout_height="51dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="60dp"
         android:text="NO"
-        tools:layout_editor_absoluteX="217dp"
-        tools:layout_editor_absoluteY="290dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
     <TextView
         android:id="@+id/textView27"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nombre:"
-        tools:layout_editor_absoluteX="72dp"
-        tools:layout_editor_absoluteY="91dp" />
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="76dp"
+        android:text="Nombre: hardcode"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView28"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Frecuencia"
-        tools:layout_editor_absoluteX="68dp"
-        tools:layout_editor_absoluteY="132dp" />
-
-    <TextView
-        android:id="@+id/textView29"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="149dp"
-        tools:layout_editor_absoluteY="91dp" />
-
-    <TextView
-        android:id="@+id/textView30"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="151dp"
-        tools:layout_editor_absoluteY="132dp" />
+        android:layout_marginTop="36dp"
+        android:text="Frecuencia: hardcode"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.237"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView27" />
 
     <TextView
         android:id="@+id/textView31"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="Podes hacer un SHAKE"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="352dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnNoRealizoIngesta"
+        app:layout_constraintVertical_bias="0.005" />
 </androidx.constraintlayout.widget.ConstraintLayout>
