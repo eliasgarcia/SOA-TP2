@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.grupo10.asistenteingesta.broadcast.AlarmaReceiver;
 import com.grupo10.asistenteingesta.R;
 import com.grupo10.asistenteingesta.modelo.Ingesta;
+import com.grupo10.asistenteingesta.modelo.Usuario;
 import com.grupo10.asistenteingesta.servicios.PersistenciaLocal;
 
 public class EditarIngestaMedicamentoActivity extends AppCompatActivity {
@@ -56,6 +57,7 @@ public class EditarIngestaMedicamentoActivity extends AppCompatActivity {
                     break;
                 case R.id.btnGuardarIngestaMedicamento:
                     validarYGuardarIngestas();
+                    finish();
                     break;
                 default:
                     Toast.makeText(getApplicationContext(),"Error en Listener de botones",Toast.LENGTH_LONG).show();
@@ -72,7 +74,6 @@ public class EditarIngestaMedicamentoActivity extends AppCompatActivity {
             medicamento.setNombre(txtMedicamentoNombre.getText().toString());
             persistenciaLocal.setMedicamento(medicamento);
             setAlarma();
-            finish();
         }
     }
 
@@ -104,13 +105,15 @@ public class EditarIngestaMedicamentoActivity extends AppCompatActivity {
     }
 
     public void setAlarma() {
+        Usuario usuario = persistenciaLocal.getUsuario();
         long tiempoEnMilis = 5000; //5 segundos
-        Integer REQUEST_CODE = 303; //TODO
+        Integer REQUEST_CODE = 0; //TODO
         AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
         Intent intent = new Intent(this, AlarmaReceiver.class);
+        intent.putExtra("EMAIL", usuario.getEmail());
+        intent.putExtra("INGESTA", "MEDICAMENTO");
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, REQUEST_CODE, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime()
                 + tiempoEnMilis, pendingIntent);
-                //setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
     }
 }

@@ -15,8 +15,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.grupo10.asistenteingesta.R;
 import com.grupo10.asistenteingesta.client.LoginClient;
 import com.grupo10.asistenteingesta.client.LoginClientBuilder;
+import com.grupo10.asistenteingesta.client.UsuarioClient;
 import com.grupo10.asistenteingesta.dto.LoginDTO;
+import com.grupo10.asistenteingesta.modelo.Usuario;
 import com.grupo10.asistenteingesta.response.LoginResponse;
+import com.grupo10.asistenteingesta.servicios.PersistenciaLocal;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -34,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView txtEmail;
     private TextView txtContrasenia;
     private LoginClient loginClient;
+    private static PersistenciaLocal persistenciaLocal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,8 @@ public class LoginActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.pgbLogin);
         progressBar.setVisibility(View.INVISIBLE);
         loginClient = LoginClientBuilder.getClient();
+        persistenciaLocal = persistenciaLocal.getInstancia(this);
+
         Log.i("Ejecuto","Ejecuto onCreate");
         setListeners();
     }
@@ -123,6 +129,11 @@ public class LoginActivity extends AppCompatActivity {
                              LoginResponse loginResponse = response.body();
                              Toast.makeText(LoginActivity.this, "Login Exitoso" +loginResponse.getToken(), Toast.LENGTH_LONG).show();
                              Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                             Usuario usuario = new Usuario();
+                             usuario.setEmail(loginDTO.getEmail());
+                             usuario.setToken(loginResponse.getToken());
+                             usuario.setToken_refresh(loginResponse.getTokenRefresh());
+                             persistenciaLocal.setUsuario(usuario);
                              startActivity(intent);
                          }
 

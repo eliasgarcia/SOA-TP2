@@ -10,55 +10,56 @@
         android:id="@+id/textView20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:text="Realizaste la ingesta?"
+        android:layout_marginTop="20dp"
+        android:text="¿Realizaste la ingesta?"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.44"
+        app:layout_constraintHorizontal_bias="0.421"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView28" />
+        app:layout_constraintTop_toBottomOf="@+id/lblIngestaFrecuenciaConfirmar" />
 
     <Button
-        android:id="@+id/btnSiRealizoIngesta"
+        android:id="@+id/btnConfirmaIngesta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="36dp"
         android:text="Si"
-        app:layout_constraintEnd_toStartOf="@+id/btnNoRealizoIngesta"
+        app:layout_constraintEnd_toStartOf="@+id/btnRechazaIngesta"
+        app:layout_constraintHorizontal_bias="0.446"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
     <Button
-        android:id="@+id/btnNoRealizoIngesta"
+        android:id="@+id/btnRechazaIngesta"
         android:layout_width="133dp"
         android:layout_height="51dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="60dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="64dp"
         android:text="NO"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
     <TextView
-        android:id="@+id/textView27"
+        android:id="@+id/lblIngestaNombreConfirmar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="72dp"
-        android:layout_marginTop="76dp"
-        android:text="Nombre: hardcode"
+        android:layout_marginTop="44dp"
+        android:text="Nombre: -"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/lblTipoIngestaConfirmar" />
 
     <TextView
-        android:id="@+id/textView28"
+        android:id="@+id/lblIngestaFrecuenciaConfirmar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="Frecuencia: hardcode"
+        android:layout_marginTop="20dp"
+        android:text="Frecuencia: -"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.237"
+        app:layout_constraintHorizontal_bias="0.218"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView27" />
+        app:layout_constraintTop_toBottomOf="@+id/lblIngestaNombreConfirmar" />
 
     <TextView
         android:id="@+id/textView31"
@@ -70,6 +71,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.06"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnNoRealizoIngesta"
+        app:layout_constraintTop_toBottomOf="@+id/btnRechazaIngesta"
         app:layout_constraintVertical_bias="0.005" />
+
+    <TextView
+        android:id="@+id/lblTipoIngestaConfirmar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
