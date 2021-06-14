@@ -80,10 +80,10 @@
         android:id="@+id/textView25"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="44dp"
         android:text="Historial"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.103"
+        app:layout_constraintEnd_toStartOf="@+id/btnLimpiarHistorial"
+        app:layout_constraintHorizontal_bias="0.187"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblBebidaFrecuencia" />
 
@@ -128,8 +128,8 @@
         app:srcCompat="@drawable/ic_action_eliminar" />
 
     <ScrollView
-        android:layout_width="351dp"
-        android:layout_height="331dp"
+        android:layout_width="369dp"
+        android:layout_height="344dp"
         android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -141,7 +141,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TableLayout
                 android:id="@+id/table"
@@ -149,5 +149,18 @@
                 android:layout_height="match_parent" />
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/btnLimpiarHistorial"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="145dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="16dp"
+        android:text="Limpiar Historial"
+        android:textColor="#E53935"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnEditarBebida" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

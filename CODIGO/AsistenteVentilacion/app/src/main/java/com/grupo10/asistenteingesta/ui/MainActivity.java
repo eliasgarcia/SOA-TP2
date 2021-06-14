@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton btnEliminarMedicamento;
     private ImageButton btnEditarBebida;
     private ImageButton btnEliminarBebida;
+    private Button btnEliminarHistorial;
     private ProgressBar progressBar;
     private TableLayout tabla;
     private static PersistenciaLocal persistenciaLocal;
@@ -55,7 +56,8 @@ public class MainActivity extends AppCompatActivity {
         btnEliminarBebida = findViewById(R.id.btnEliminarBebida);;
         btnEditarBebida.setOnClickListener(botonesListeners);
         btnEliminarBebida.setOnClickListener(botonesListeners);
-
+        btnEliminarHistorial = findViewById(R.id.btnLimpiarHistorial);
+        btnEliminarHistorial.setOnClickListener(botonesListeners);
         tabla = findViewById(R.id.table);
         persistenciaLocal = persistenciaLocal.getInstancia(this);
     }
@@ -81,6 +83,10 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.btnEliminarBebida:
                     persistenciaLocal.eliminarBebida();
                     setBebida();
+                    break;
+                case R.id.btnLimpiarHistorial:
+                    persistenciaLocal.eliminarHistorial();
+                    setTabla();
                     break;
                 default:
                     Toast.makeText(getApplicationContext(),"Error en Listener de botones",Toast.LENGTH_LONG).show();

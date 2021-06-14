@@ -15,7 +15,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.grupo10.asistenteingesta.R;
 import com.grupo10.asistenteingesta.client.LoginClient;
 import com.grupo10.asistenteingesta.client.LoginClientBuilder;
-import com.grupo10.asistenteingesta.client.UsuarioClient;
 import com.grupo10.asistenteingesta.dto.LoginDTO;
 import com.grupo10.asistenteingesta.modelo.Usuario;
 import com.grupo10.asistenteingesta.response.LoginResponse;
@@ -133,6 +132,10 @@ public class LoginActivity extends AppCompatActivity {
                              usuario.setEmail(loginDTO.getEmail());
                              usuario.setToken(loginResponse.getToken());
                              usuario.setToken_refresh(loginResponse.getTokenRefresh());
+                             Usuario usuarioAnterior = persistenciaLocal.getUsuario();
+                             if(usuarioAnterior == null || !usuarioAnterior.getEmail().equals(usuario.getEmail())){
+                                 persistenciaLocal.limpiar();
+                             }
                              persistenciaLocal.setUsuario(usuario);
                              startActivity(intent);
                          }

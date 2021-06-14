@@ -98,6 +98,11 @@ public class PersistenciaLocal {
         editor.apply();
     }
 
+    public void eliminarHistorial() {
+        editor.remove(KEY_HISTORIAL);
+        editor.apply();
+    }
+
     //deberia limpiarse cuando ingresa un nuevo usuario;
     public void limpiar(){
         editor.clear();
