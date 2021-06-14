@@ -8,6 +8,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -43,6 +44,8 @@ public class ConfirmarIngestaActivity extends AppCompatActivity {
     private float last_y = 0;
     private float last_z = 0;
     private long lastUpdate = 0;
+    private MediaPlayer mediaPlayer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +67,8 @@ public class ConfirmarIngestaActivity extends AppCompatActivity {
         }
         sensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
         cargarLabels();
+        mediaPlayer = MediaPlayer.create(this, R.raw.alarma);
+        mediaPlayer.start();
     }
 
     private SensorEventListener sensorListener = new SensorEventListener() {
