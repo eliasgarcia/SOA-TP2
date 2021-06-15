@@ -29,21 +29,15 @@ import java.util.List;
 
 public class ConfirmarIngestaActivity extends AppCompatActivity {
 
-    private static final int SHAKE_THRESHOLD = 800;
     private TextView lblTipoIngestaConfirmar;
     private TextView lblIngestaConfirmaNombre;
     private TextView lblIngestaConfirmaFecuencia;
     private Button btnConfirmarIngesta;
     private Button btnRechazaIngesta;
-    private ProgressBar progressBar;
     private static PersistenciaLocal persistenciaLocal;
     private Bundle bundle;
     private Ingesta ingesta;
     private SensorManager sensorManager;
-    private float last_x = 0;
-    private float last_y = 0;
-    private float last_z = 0;
-    private long lastUpdate = 0;
     private MediaPlayer mediaPlayer;
 
     @Override
@@ -76,30 +70,15 @@ public class ConfirmarIngestaActivity extends AppCompatActivity {
         public void onSensorChanged(SensorEvent sensorEvent) {
             //Intent intent = new Intent(ConfirmarIngestaActivity.this,MainActivity.class);
 
-
-            long curTime = System.currentTimeMillis();
-            // only allow one update every 100ms.
-            if ((curTime - lastUpdate) > 100) {
-                long diffTime = (curTime - lastUpdate);
-                lastUpdate = curTime;
-
-                float x = sensorEvent.values[0];
-                float y = sensorEvent.values[1];
-                float z = sensorEvent.values[2];
-
-                float speed = Math.abs(x+y+z - last_x - last_y - last_z) / diffTime * 10000;
-
-                if (speed > SHAKE_THRESHOLD) {
-                    Toast.makeText(ConfirmarIngestaActivity.this, "SHAKEEEEE", Toast.LENGTH_LONG).show();
-                    confirmaIngesta();
-                    //startActivity(intent);
-                    finish();
-                }
-                last_x = x;
-                last_y = y;
-                last_z = z;
+            float x = sensorEvent.values[0];
+            float y = sensorEvent.values[1];
+            float z = sensorEvent.values[2];
+            if(x>25 || y>25 || z>25){
+                Toast.makeText(ConfirmarIngestaActivity.this, "SHAKEEEEE", Toast.LENGTH_LONG).show();
+                confirmaIngesta();
+                //startActivity(intent);
+                finish();
             }
-
         }
 
         @Override
