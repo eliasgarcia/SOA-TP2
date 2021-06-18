@@ -16,9 +16,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.grupo10.asistenteingesta.R;
 import com.grupo10.asistenteingesta.client.UsuarioClient;
 import com.grupo10.asistenteingesta.client.UsuarioClientBuilder;
+import com.grupo10.asistenteingesta.dto.ErrorDTO;
 import com.grupo10.asistenteingesta.dto.UsuarioDTO;
+import com.grupo10.asistenteingesta.response.LoginResponse;
 import com.grupo10.asistenteingesta.response.RegistroResponse;
+import com.grupo10.asistenteingesta.util.JsonConverter;
 
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -132,7 +136,7 @@ public class RegistroActivity extends AppCompatActivity {
                          public void onResponse(Call<RegistroResponse> call, Response<RegistroResponse> response) {
                              progressBar.setVisibility(View.INVISIBLE);
                              if(!response.isSuccessful()){
-                                 Toast.makeText(RegistroActivity.this, "Registro NO Exitoso", Toast.LENGTH_LONG).show();
+                                 registroNoExitoso(response);
                                  return;
                              }
                              RegistroResponse registroResponse = response.body();
@@ -149,6 +153,19 @@ public class RegistroActivity extends AppCompatActivity {
                      }
 
         );
+    }
+
+    private void registroNoExitoso(Response<RegistroResponse> response){
+        if(response.raw().code() != 400){
+            Toast.makeText(RegistroActivity.this, "Hubo un error. Intente mas tarde.", Toast.LENGTH_LONG).show();
+            return;
+        }
+        try {
+            ErrorDTO error = JsonConverter.getError(response.errorBody().string());
+            Toast.makeText(RegistroActivity.this, "Error: " + error.getMsg(), Toast.LENGTH_LONG).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

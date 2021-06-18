@@ -12,14 +12,19 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.grupo10.asistenteingesta.R;
 import com.grupo10.asistenteingesta.client.LoginClient;
 import com.grupo10.asistenteingesta.client.LoginClientBuilder;
+import com.grupo10.asistenteingesta.dto.ErrorDTO;
 import com.grupo10.asistenteingesta.dto.LoginDTO;
 import com.grupo10.asistenteingesta.modelo.Usuario;
 import com.grupo10.asistenteingesta.response.LoginResponse;
 import com.grupo10.asistenteingesta.servicios.PersistenciaLocal;
+import com.grupo10.asistenteingesta.util.JsonConverter;
 
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -121,23 +126,14 @@ public class LoginActivity extends AppCompatActivity {
                          public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                              progressBar.setVisibility(View.INVISIBLE);
                              if(!response.isSuccessful()){
-                                 Toast.makeText(LoginActivity.this, "Login NO Exitoso. Error" + response.errorBody(), Toast.LENGTH_LONG).show();
-
+                                 loginNoExitoso(response);
                                  return;
                              }
-                             LoginResponse loginResponse = response.body();
-                             Toast.makeText(LoginActivity.this, "Login Exitoso" +loginResponse.getToken(), Toast.LENGTH_LONG).show();
-                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                             Usuario usuario = new Usuario();
-                             usuario.setEmail(loginDTO.getEmail());
-                             usuario.setToken(loginResponse.getToken());
-                             usuario.setToken_refresh(loginResponse.getTokenRefresh());
-                             Usuario usuarioAnterior = persistenciaLocal.getUsuario();
-                             if(usuarioAnterior == null || !usuarioAnterior.getEmail().equals(usuario.getEmail())){
-                                 persistenciaLocal.limpiar();
-                             }
-                             persistenciaLocal.setUsuario(usuario);
-                             startActivity(intent);
+                             Toast.makeText(LoginActivity.this, "Login Exitoso", Toast.LENGTH_LONG).show();
+                             //todo:sacar el clean
+                             persistenciaLocal.limpiar();
+                             guardarUsuario(response.body(),loginDTO);
+                             abrirMainActivity();
                          }
 
                          @Override
@@ -148,6 +144,40 @@ public class LoginActivity extends AppCompatActivity {
                      }
 
         );
+    }
+
+    private void loginNoExitoso(Response<LoginResponse> response){
+        if(response.raw().code() != 400){
+            Toast.makeText(LoginActivity.this, "Hubo un error. Intente mas tarde.", Toast.LENGTH_LONG).show();
+            return;
+        }
+        try {
+            ErrorDTO error = JsonConverter.getError(response.errorBody().string());
+            txtContrasenia.setError("Contraseña no válida.");
+            Toast.makeText(LoginActivity.this, "Error: " + error.getMsg(), Toast.LENGTH_LONG).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    private void abrirMainActivity(){
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    private void guardarUsuario(LoginResponse loginResponse, LoginDTO loginDTO){
+        Usuario usuario = new Usuario();
+        usuario.setEmail(loginDTO.getEmail());
+        usuario.setToken(loginResponse.getToken());
+        usuario.setToken_refresh(loginResponse.getTokenRefresh());
+        Usuario usuarioAnterior = persistenciaLocal.getUsuario();
+        //limpio sharedReference si el usuario actual es distinto al ultimo que hizo login.
+        if(usuarioAnterior!=null && !usuarioAnterior.getEmail().equals(usuario.getEmail())){
+            persistenciaLocal.limpiar();
+        }
+        persistenciaLocal.setUsuario(usuario);
+
     }
 
 }

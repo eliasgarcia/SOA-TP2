@@ -12,8 +12,6 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,12 +21,12 @@ import com.grupo10.asistenteingesta.modelo.Historial;
 import com.grupo10.asistenteingesta.modelo.Ingesta;
 import com.grupo10.asistenteingesta.servicios.PersistenciaLocal;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ConfirmarIngestaActivity extends AppCompatActivity {
 
+    private static final int UMBRAL_SHAKE = 30;
     private TextView lblTipoIngestaConfirmar;
     private TextView lblIngestaConfirmaNombre;
     private TextView lblIngestaConfirmaFecuencia;
@@ -69,16 +67,20 @@ public class ConfirmarIngestaActivity extends AppCompatActivity {
         @Override
         public void onSensorChanged(SensorEvent sensorEvent) {
             //Intent intent = new Intent(ConfirmarIngestaActivity.this,MainActivity.class);
-
-            float x = sensorEvent.values[0];
-            float y = sensorEvent.values[1];
-            float z = sensorEvent.values[2];
-            if(x>25 || y>25 || z>25){
-                Toast.makeText(ConfirmarIngestaActivity.this, "SHAKEEEEE", Toast.LENGTH_LONG).show();
-                confirmaIngesta();
-                //startActivity(intent);
-                finish();
+            synchronized (this) {
+                if (sensorEvent.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+                    float x = sensorEvent.values[0];
+                    float y = sensorEvent.values[1];
+                    float z = sensorEvent.values[2];
+                    if (x > UMBRAL_SHAKE || y > UMBRAL_SHAKE || z > UMBRAL_SHAKE) {
+                        Toast.makeText(ConfirmarIngestaActivity.this, "SHAKEEEEE", Toast.LENGTH_LONG).show();
+                        confirmaIngesta();
+                        //startActivity(intent);
+                        finish();//o unregister
+                    }
+                }
             }
+
         }
 
         @Override
@@ -145,7 +147,7 @@ public class ConfirmarIngestaActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        sensorManager.registerListener(sensorListener, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_GAME);
+        sensorManager.registerListener(sensorListener, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     @Override

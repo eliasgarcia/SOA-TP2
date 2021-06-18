@@ -15,6 +15,8 @@ public class PersistenciaLocal {
     private static final String KEY_HISTORIAL = "key_historial";
     private static final String KEY_MEDICAMENTO = "key_medicamento";
     private static final String KEY_BEBIDA = "key_bebida";
+    private static final String KEY_LUX = "key_lux";
+    private static final String KEY_PROXIMIDAD = "key_proximidad";
 
     private SharedPreferences sPreference;
     private SharedPreferences.Editor editor;
@@ -100,6 +102,24 @@ public class PersistenciaLocal {
 
     public void eliminarHistorial() {
         editor.remove(KEY_HISTORIAL);
+        editor.apply();
+    }
+
+    public void setValorLux(float lux){
+        editor.putFloat(KEY_LUX, lux);
+        editor.apply();
+    }
+
+    public float getValorLux(){
+        return sPreference.getFloat(KEY_LUX, 0.0f);
+    }
+
+    public float getValorProximidad(){
+        return sPreference.getFloat(KEY_PROXIMIDAD, 0.0f);
+    }
+
+    public void setValorProximidad(float proximidad){
+        editor.putFloat(KEY_PROXIMIDAD, proximidad);
         editor.apply();
     }
 
