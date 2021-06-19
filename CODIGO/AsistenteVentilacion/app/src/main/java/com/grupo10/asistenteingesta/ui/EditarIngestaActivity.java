@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 import com.grupo10.asistenteingesta.broadcast.AlarmaReceiver;
 import com.grupo10.asistenteingesta.R;
-import com.grupo10.asistenteingesta.constantes.Constante;
+import com.grupo10.asistenteingesta.util.Constante;
 import com.grupo10.asistenteingesta.modelo.Ingesta;
 import com.grupo10.asistenteingesta.modelo.Usuario;
 import com.grupo10.asistenteingesta.servicios.PersistenciaLocal;

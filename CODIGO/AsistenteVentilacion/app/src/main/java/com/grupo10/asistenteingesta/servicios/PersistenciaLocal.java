@@ -15,14 +15,12 @@ public class PersistenciaLocal {
     private static final String KEY_HISTORIAL = "key_historial";
     private static final String KEY_MEDICAMENTO = "key_medicamento";
     private static final String KEY_BEBIDA = "key_bebida";
-    private static final String KEY_LUX = "key_lux";
-    private static final String KEY_PROXIMIDAD = "key_proximidad";
+    private static final String EMPTY = "EMPTY";
 
     private SharedPreferences sPreference;
     private SharedPreferences.Editor editor;
     private Context contexto;
     private static PersistenciaLocal instancia;
-    private static final String EMPTY = "EMPTY";
 
     private PersistenciaLocal(Context contexto) {
         this.contexto = contexto;

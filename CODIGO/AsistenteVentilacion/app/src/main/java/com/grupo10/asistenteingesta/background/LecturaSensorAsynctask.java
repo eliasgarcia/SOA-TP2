@@ -10,7 +10,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.grupo10.asistenteingesta.constantes.Constante;
+import com.grupo10.asistenteingesta.util.Constante;
 import com.grupo10.asistenteingesta.ui.ConfirmarIngestaActivity;
 
 import static android.content.Context.SENSOR_SERVICE;

@@ -12,7 +12,7 @@ import android.widget.Toast;
 import androidx.core.app.NotificationCompat;
 
 import com.grupo10.asistenteingesta.R;
-import com.grupo10.asistenteingesta.constantes.Constante;
+import com.grupo10.asistenteingesta.util.Constante;
 import com.grupo10.asistenteingesta.servicios.PersistenciaLocal;
 import com.grupo10.asistenteingesta.ui.ConfirmarIngestaActivity;
 import com.grupo10.asistenteingesta.background.LecturaSensorAsynctask;

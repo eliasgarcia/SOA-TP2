@@ -16,7 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.grupo10.asistenteingesta.R;
-import com.grupo10.asistenteingesta.constantes.Constante;
+import com.grupo10.asistenteingesta.util.Constante;
 import com.grupo10.asistenteingesta.modelo.EstadoIngesta;
 import com.grupo10.asistenteingesta.modelo.Historial;
 import com.grupo10.asistenteingesta.modelo.Ingesta;

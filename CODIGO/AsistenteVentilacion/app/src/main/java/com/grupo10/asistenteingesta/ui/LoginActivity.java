@@ -11,9 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.grupo10.asistenteingesta.R;
 import com.grupo10.asistenteingesta.client.LoginClient;
 import com.grupo10.asistenteingesta.client.LoginClientBuilder;
@@ -130,8 +127,6 @@ public class LoginActivity extends AppCompatActivity {
                                  return;
                              }
                              Toast.makeText(LoginActivity.this, "Login Exitoso", Toast.LENGTH_LONG).show();
-                             //todo:sacar el clean
-                             persistenciaLocal.limpiar();
                              guardarUsuario(response.body(),loginDTO);
                              abrirMainActivity();
                          }
@@ -154,7 +149,7 @@ public class LoginActivity extends AppCompatActivity {
         try {
             ErrorDTO error = JsonConverter.getError(response.errorBody().string());
             txtContrasenia.setError("Contraseña no válida.");
-            Toast.makeText(LoginActivity.this, "Error: " + error.getMsg(), Toast.LENGTH_LONG).show();
+            Toast.makeText(LoginActivity.this, error.getMsg(), Toast.LENGTH_LONG).show();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -167,17 +162,17 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void guardarUsuario(LoginResponse loginResponse, LoginDTO loginDTO){
+        persistenciaLocal.limpiar();
         Usuario usuario = new Usuario();
         usuario.setEmail(loginDTO.getEmail());
         usuario.setToken(loginResponse.getToken());
         usuario.setToken_refresh(loginResponse.getTokenRefresh());
         Usuario usuarioAnterior = persistenciaLocal.getUsuario();
         //limpio sharedReference si el usuario actual es distinto al ultimo que hizo login.
-        if(usuarioAnterior!=null && !usuarioAnterior.getEmail().equals(usuario.getEmail())){
+        if(usuarioAnterior == null || !usuarioAnterior.getEmail().equals(usuario.getEmail())){
             persistenciaLocal.limpiar();
         }
         persistenciaLocal.setUsuario(usuario);
-
     }
 
 }

@@ -1,5 +1,6 @@
 package com.grupo10.asistenteingesta.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -17,9 +18,12 @@ import com.grupo10.asistenteingesta.R;
 import com.grupo10.asistenteingesta.client.UsuarioClient;
 import com.grupo10.asistenteingesta.client.UsuarioClientBuilder;
 import com.grupo10.asistenteingesta.dto.ErrorDTO;
+import com.grupo10.asistenteingesta.dto.LoginDTO;
 import com.grupo10.asistenteingesta.dto.UsuarioDTO;
+import com.grupo10.asistenteingesta.modelo.Usuario;
 import com.grupo10.asistenteingesta.response.LoginResponse;
 import com.grupo10.asistenteingesta.response.RegistroResponse;
+import com.grupo10.asistenteingesta.servicios.PersistenciaLocal;
 import com.grupo10.asistenteingesta.util.JsonConverter;
 
 import java.io.IOException;
@@ -42,6 +46,7 @@ public class RegistroActivity extends AppCompatActivity {
     private Button btnGuardarNuevoUsuario;
     private UsuarioClient usuarioClient;
     private ProgressBar progressBar;
+    private static PersistenciaLocal persistenciaLocal;
 
 
     @Override
@@ -58,6 +63,8 @@ public class RegistroActivity extends AppCompatActivity {
         usuarioClient = UsuarioClientBuilder.getClient();
         progressBar = findViewById(R.id.pgbRegistro);
         progressBar.setVisibility(View.INVISIBLE);
+        persistenciaLocal = persistenciaLocal.getInstancia(this);
+
         Log.i("Ejecuto","Ejecuto onCreate");
     }
 
@@ -141,14 +148,15 @@ public class RegistroActivity extends AppCompatActivity {
                              }
                              RegistroResponse registroResponse = response.body();
                              Toast.makeText(RegistroActivity.this, "Registro Exitoso" +registroResponse.getToken(), Toast.LENGTH_LONG).show();
-
+                             guardarUsuario(response.body(),usuarioDTO);
+                             abrirMainActivity();
                          }
 
                         //Cuando falla al intentar hacer request
                          @Override
                          public void onFailure(Call<RegistroResponse> call, Throwable t) {
                              progressBar.setVisibility(View.INVISIBLE);
-                             Toast.makeText(RegistroActivity.this, "Fallo. onFailure", Toast.LENGTH_LONG).show();
+                             Toast.makeText(RegistroActivity.this, "Fallo. onFailure", Toast.LENGTH_SHORT).show();
                          }
                      }
 
@@ -157,15 +165,29 @@ public class RegistroActivity extends AppCompatActivity {
 
     private void registroNoExitoso(Response<RegistroResponse> response){
         if(response.raw().code() != 400){
-            Toast.makeText(RegistroActivity.this, "Hubo un error. Intente mas tarde.", Toast.LENGTH_LONG).show();
+            Toast.makeText(RegistroActivity.this, "Hubo un error. Intente mas tarde.", Toast.LENGTH_SHORT).show();
             return;
         }
         try {
             ErrorDTO error = JsonConverter.getError(response.errorBody().string());
-            Toast.makeText(RegistroActivity.this, "Error: " + error.getMsg(), Toast.LENGTH_LONG).show();
+            Toast.makeText(RegistroActivity.this, error.getMsg(), Toast.LENGTH_LONG).show();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void abrirMainActivity(){
+        Intent intent = new Intent(RegistroActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    private void guardarUsuario(RegistroResponse loginResponse, UsuarioDTO usuarioDTO){
+        Usuario usuario = new Usuario();
+        usuario.setEmail(usuarioDTO.getEmail());
+        usuario.setToken(loginResponse.getToken());
+        usuario.setToken_refresh(loginResponse.getTokenRefresh());
+        persistenciaLocal.limpiar();
+        persistenciaLocal.setUsuario(usuario);
     }
 
 }

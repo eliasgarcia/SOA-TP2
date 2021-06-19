@@ -1,4 +1,4 @@
-package com.grupo10.asistenteingesta.constantes;
+package com.grupo10.asistenteingesta.util;
 
 public enum Constante {
     EMAIL,
