@@ -14,14 +14,154 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10160217-b6c8-4e81-8d54-3c1a8b5d241a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/servicios/InternetStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/servicios/InternetStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/EditarIngestaActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/EditarIngestaActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_registro.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_registro.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/assetWizardSettings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/caches/build_file_checksums.ser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/caches/gradle_models.ser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__androidx_activity_activity_1_2_3_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__androidx_annotation_annotation_1_2_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__androidx_annotation_annotation_experimental_1_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__androidx_appcompat_appcompat_1_3_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__androidx_appcompat_appcompat_resources_1_3_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__androidx_arch_core_core_common_2_1_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_1_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__androidx_collection_collection_1_1_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_2_0_4_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__androidx_constraintlayout_constraintlayout_solver_2_0_4_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__androidx_core_core_1_5_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__androidx_cursoradapter_cursoradapter_1_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__androidx_customview_customview_1_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__androidx_drawerlayout_drawerlayout_1_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__androidx_fragment_fragment_1_3_4_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__androidx_interpolator_interpolator_1_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_common_2_3_1_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_2_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_core_2_3_1_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_runtime_2_3_1_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_2_3_1_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_savedstate_2_3_1_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__androidx_loader_loader_1_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__androidx_savedstate_savedstate_1_1_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__androidx_test_core_1_3_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__androidx_test_espresso_espresso_core_3_3_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__androidx_test_espresso_espresso_idling_resource_3_3_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__androidx_test_ext_junit_1_1_2_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__androidx_test_monitor_1_3_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__androidx_test_runner_1_3_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_1_1_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_animated_1_1_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__androidx_versionedparcelable_versionedparcelable_1_1_1_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__androidx_viewpager_viewpager_1_0_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__com_google_code_findbugs_jsr305_2_0_1_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__com_google_code_gson_gson_2_8_2_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__com_squareup_javawriter_2_1_1_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__com_squareup_okhttp3_okhttp_3_12_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__com_squareup_okio_okio_1_15_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__com_squareup_retrofit2_converter_gson_2_5_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__com_squareup_retrofit2_retrofit_2_5_0_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__javax_inject_javax_inject_1_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__junit_junit_4_12_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__org_hamcrest_hamcrest_integration_1_3_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/libraries/Gradle__org_hamcrest_hamcrest_library_1_3_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/render.experimental.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/proguard-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/androidTest/java/com/grupo10/asistenteingesta/ExampleInstrumentedTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/java/com/grupo10/asistenteingesta/background/LecturaSensorAsynctask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/java/com/grupo10/asistenteingesta/broadcast/AlarmaReceiver.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/java/com/grupo10/asistenteingesta/client/LoginClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/java/com/grupo10/asistenteingesta/client/LoginClientBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/java/com/grupo10/asistenteingesta/client/UsuarioClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/java/com/grupo10/asistenteingesta/client/UsuarioClientBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/java/com/grupo10/asistenteingesta/dto/ErrorDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/java/com/grupo10/asistenteingesta/dto/LoginDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/java/com/grupo10/asistenteingesta/dto/UsuarioDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/java/com/grupo10/asistenteingesta/modelo/EstadoIngesta.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/java/com/grupo10/asistenteingesta/modelo/Historial.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/java/com/grupo10/asistenteingesta/modelo/Ingesta.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/java/com/grupo10/asistenteingesta/modelo/Usuario.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/java/com/grupo10/asistenteingesta/response/LoginResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/java/com/grupo10/asistenteingesta/response/RegistroResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/java/com/grupo10/asistenteingesta/servicios/AlarmaService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/java/com/grupo10/asistenteingesta/servicios/InternetStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/java/com/grupo10/asistenteingesta/servicios/PersistenciaLocal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/java/com/grupo10/asistenteingesta/ui/ConfirmarIngestaActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/java/com/grupo10/asistenteingesta/ui/EditarIngestaActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/java/com/grupo10/asistenteingesta/ui/EnviarSmsActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/java/com/grupo10/asistenteingesta/ui/LecturasSensorActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/java/com/grupo10/asistenteingesta/ui/LoginActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/java/com/grupo10/asistenteingesta/ui/MainActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/java/com/grupo10/asistenteingesta/ui/RegistroActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/java/com/grupo10/asistenteingesta/ui/ValidarSmsActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/java/com/grupo10/asistenteingesta/util/CodigoIngesta.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/java/com/grupo10/asistenteingesta/util/Constante.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/java/com/grupo10/asistenteingesta/util/JsonConverter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/drawable-anydpi/ic_action_batery.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/drawable-anydpi/ic_action_editar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/drawable-anydpi/ic_action_eliminar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/drawable-hdpi/ic_action_batery.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/drawable-hdpi/ic_action_editar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/drawable-hdpi/ic_action_eliminar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/drawable-mdpi/ic_action_batery.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/drawable-mdpi/ic_action_editar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/drawable-mdpi/ic_action_eliminar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/drawable-xhdpi/ic_action_batery.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/drawable-xhdpi/ic_action_editar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/drawable-xhdpi/ic_action_eliminar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/drawable-xxhdpi/ic_action_batery.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/drawable-xxhdpi/ic_action_editar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/drawable-xxhdpi/ic_action_eliminar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/layout/activity_confirmar_ingesta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/layout/activity_editar_ingesta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/layout/activity_enviar_sms.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/layout/activity_lecturas_sensor.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/layout/activity_login.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/layout/activity_main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/layout/activity_registro.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/layout/activity_validar_sms.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/raw/alarma.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/raw/sonido_agua.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/raw/sonido_sirena.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/values/colors.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/values/strings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/main/res/values/styles.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/app/src/test/java/com/grupo10/asistenteingesta/ExampleUnitTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/hs_err_pid10036.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/hs_err_pid22176.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/local.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/replay_pid10036.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/replay_pid22176.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AsistenteVentilacion/settings.gradle" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,11 +197,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="150" selection-start-line="150" selection-end-line="150" />
+            <state relative-caret-position="1275">
+              <caret line="103" column="38" selection-start-line="103" selection-start-column="38" selection-end-line="103" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -72,7 +212,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/servicios/AlarmaService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="731">
+            <state relative-caret-position="327">
               <caret line="43" column="41" selection-start-line="43" selection-start-column="41" selection-end-line="43" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -83,10 +223,20 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <provider editor-type-id="android-manifest" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="388">
+              <caret line="42" column="11" lean-forward="true" selection-start-line="42" selection-start-column="11" selection-end-line="42" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/EditarIngestaActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
+            <state relative-caret-position="255">
               <caret line="31" column="25" selection-start-line="31" selection-end-line="32" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -97,12 +247,12 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-          <provider selected="true" editor-type-id="android-designer2" />
-          <provider editor-type-id="text-editor">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
               <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
             </state>
           </provider>
+          <provider editor-type-id="android-designer2" />
         </entry>
       </file>
     </leaf>
@@ -235,27 +385,18 @@
             <path>
               <item name="Asistente Ingesta" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="manifests" type="f94875db:AndroidManifestsGroupNode" />
             </path>
             <path>
               <item name="Asistente Ingesta" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="asistenteingesta" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Asistente Ingesta" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="asistenteingesta" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -263,7 +404,7 @@
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2021-06-19T12:46:25.587Z" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../activity_recognition" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -747,12 +888,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
       <provider editor-type-id="text-editor">
         <state relative-caret-position="99">
           <caret line="90" column="47" selection-start-line="90" selection-end-line="91" />
         </state>
       </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
     </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.5.0/5c17035548a41ec60f00291163d36596a23ddd1a/retrofit-2.5.0-sources.jar!/retrofit2/Response.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -851,8 +992,8 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_editar_ingesta_bebida.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/EditarIngestaBebidaActivity.java" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_confirmar_ingesta.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
       <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/util/Constante.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -869,14 +1010,6 @@
             <element signature="e#7659#7660#0" expanded="true" />
             <element signature="e#7710#7711#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="11" column="39" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
         </state>
       </provider>
     </entry>
@@ -911,12 +1044,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_enviar_sms.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
       <provider editor-type-id="text-editor">
         <state relative-caret-position="765">
           <caret line="48" column="39" selection-start-line="48" selection-start-column="39" selection-end-line="48" selection-end-column="39" />
         </state>
       </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/EnviarSmsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -956,24 +1089,24 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_validar_sms.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
       <provider editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
         </state>
       </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_registro.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
       <provider editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="27" column="22" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="22" />
         </state>
       </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_lecturas_sensor.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
       <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/RegistroActivity.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -986,8 +1119,8 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_editar_ingesta.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
       <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/util/CodigoIngesta.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1014,17 +1147,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="103" column="38" selection-start-line="103" selection-start-column="38" selection-end-line="103" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/EditarIngestaActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="31" column="25" selection-start-line="31" selection-end-line="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
-      <provider editor-type-id="text-editor">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/servicios/AlarmaService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
+        <state relative-caret-position="327">
           <caret line="43" column="41" selection-start-line="43" selection-start-column="41" selection-end-line="43" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1034,23 +1187,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/EditarIngestaActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="31" column="25" selection-start-line="31" selection-end-line="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="150" selection-start-line="150" selection-end-line="150" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="388">
+          <caret line="42" column="11" lean-forward="true" selection-start-line="42" selection-start-column="11" selection-end-line="42" selection-end-column="11" />
         </state>
       </provider>
     </entry>
