@@ -162,7 +162,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void guardarUsuario(LoginResponse loginResponse, LoginDTO loginDTO){
-        persistenciaLocal.limpiar();
+        //persistenciaLocal.limpiar();
         Usuario usuario = new Usuario();
         usuario.setEmail(loginDTO.getEmail());
         usuario.setToken(loginResponse.getToken());

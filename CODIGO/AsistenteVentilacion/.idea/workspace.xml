@@ -14,16 +14,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10160217-b6c8-4e81-8d54-3c1a8b5d241a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/background/LecturaSensorAsynctask.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/background/LecturaSensorAsynctask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/broadcast/AlarmaReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/broadcast/AlarmaReceiver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/constantes/Constante.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/util/Constante.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/servicios/PersistenciaLocal.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/servicios/PersistenciaLocal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/ConfirmarIngestaActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/ConfirmarIngestaActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/EditarIngestaActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/EditarIngestaActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/LoginActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/RegistroActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/RegistroActivity.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -62,8 +55,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/ConfirmarIngestaActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="31">
-              <caret line="136" selection-start-line="135" selection-end-line="136" />
+            <state relative-caret-position="160">
+              <caret line="139" column="27" lean-forward="true" selection-start-line="139" selection-start-column="27" selection-end-line="139" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -71,11 +64,33 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <provider editor-type-id="android-manifest" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="11" column="39" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/LoginActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="171" column="67" selection-start-line="171" selection-start-column="67" selection-end-line="171" selection-end-column="67" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="87">
-              <caret line="115" selection-start-line="115" selection-end-line="115" />
+            <state relative-caret-position="155">
+              <caret line="134" column="53" selection-start-line="134" selection-start-column="53" selection-end-line="134" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -119,7 +134,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/broadcast/AlarmaReceiver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
+            <state relative-caret-position="-108">
               <caret line="42" selection-start-line="42" selection-end-line="42" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -128,11 +143,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/background/LecturaSensorAsynctask.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="87">
-              <caret line="40" selection-start-line="40" selection-end-line="40" />
+            <state relative-caret-position="160">
+              <caret line="72" column="17" selection-start-line="72" selection-start-column="17" selection-end-line="72" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -153,10 +168,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>medicam</find>
-      <find>MEDICAMENTO</find>
-      <find>persistenciaLocal</find>
-      <find>inten</find>
       <find>editar</find>
       <find>validarYGuardarIngestas</find>
       <find>intent</find>
@@ -183,6 +194,10 @@
       <find>medica</find>
       <find>setBebida</find>
       <find>tipoIngesta</find>
+      <find>alarma</find>
+      <find>stop</find>
+      <find>proximid</find>
+      <find>proximidad</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -229,8 +244,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/SensorLuzAsynTask.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/background/SensorLuzAsynTask.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/constantes/Constante.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/ConfirmarIngestaActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/background/LecturaSensorAsynctask.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_editar_ingesta_bebida.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_editar_ingesta_medicamento.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/EditarIngestaMedicamentoActivity.java" />
@@ -240,8 +253,10 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/servicios/PersistenciaLocal.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/RegistroActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/LoginActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/EditarIngestaActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/LoginActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/ConfirmarIngestaActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/background/LecturaSensorAsynctask.java" />
       </list>
     </option>
   </component>
@@ -260,7 +275,53 @@
     </navigator>
     <panes>
       <pane id="ProjectPane" />
-      <pane id="AndroidView" />
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Asistente Ingesta" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="Asistente Ingesta" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="Asistente Ingesta" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="asistenteingesta" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Asistente Ingesta" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="asistenteingesta" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="background" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Asistente Ingesta" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="asistenteingesta" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Asistente Ingesta" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+            </path>
+            <path>
+              <item name="Asistente Ingesta" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="raw" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
@@ -282,6 +343,9 @@
     <option name="LAST_EDITED_BUILD_TYPE" value="release" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\egarcia\workspace android studio\SOA-TP_2-Grupo_10\CODIGO\AsistenteVentilacion\app\src\main\res\raw" />
+    </key>
     <key name="android.template.packageName">
       <recent name="com.grupo10.asistenteingesta" />
       <recent name="com.grupo10.asistenteventilacion" />
@@ -394,11 +458,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1295" height="695" extended-state="7" />
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" sideWeight="0.5008881" side_tool="true" weight="0.32955465" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49567723" visible="true" weight="0.089878544" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.49567723" visible="true" weight="0.15870446" />
       <window_info id="Structure" order="2" sideWeight="0.50432277" side_tool="true" weight="0.20890689" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -409,7 +473,7 @@
       <window_info anchor="bottom" id="Run" order="0" weight="0.22261484" />
       <window_info anchor="bottom" id="Logcat" order="1" weight="0.86856127" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.3268206" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.45648313" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.27886322" />
       <window_info anchor="bottom" id="Terminal" order="4" weight="0.3285968" />
       <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="6" />
@@ -456,43 +520,43 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/background/LecturaSensorAsynctask.java</url>
-          <line>73</line>
+          <line>74</line>
           <properties />
           <option name="timeStamp" value="110" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/background/LecturaSensorAsynctask.java</url>
-          <line>77</line>
+          <line>78</line>
           <properties />
           <option name="timeStamp" value="111" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/background/LecturaSensorAsynctask.java</url>
-          <line>66</line>
+          <line>67</line>
           <properties />
           <option name="timeStamp" value="112" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/background/LecturaSensorAsynctask.java</url>
-          <line>64</line>
+          <line>65</line>
           <properties />
           <option name="timeStamp" value="113" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/background/LecturaSensorAsynctask.java</url>
-          <line>69</line>
+          <line>70</line>
           <properties />
           <option name="timeStamp" value="114" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/background/LecturaSensorAsynctask.java</url>
-          <line>67</line>
+          <line>68</line>
           <properties />
           <option name="timeStamp" value="115" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/background/LecturaSensorAsynctask.java</url>
-          <line>76</line>
+          <line>77</line>
           <properties />
           <option name="timeStamp" value="116" />
         </line-breakpoint>
@@ -856,14 +920,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="36" column="51" selection-start-line="36" selection-start-column="51" selection-end-line="36" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/AppData/Local/Android/Sdk/platforms/android-28/android.jar!/android/hardware/Sensor.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-742">
@@ -952,30 +1008,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/broadcast/AlarmaReceiver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/RegistroActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="331">
           <caret line="172" column="50" lean-forward="true" selection-start-line="172" selection-start-column="50" selection-end-line="172" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/LoginActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="143" column="17" selection-start-line="143" selection-start-column="17" selection-end-line="143" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -993,13 +1029,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/ConfirmarIngestaActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/servicios/PersistenciaLocal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="31">
-          <caret line="136" selection-start-line="135" selection-end-line="136" />
+        <state relative-caret-position="96">
+          <caret line="65" selection-start-line="65" selection-end-line="65" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="134" column="53" selection-start-line="134" selection-start-column="53" selection-end-line="134" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/LoginActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="171" column="67" selection-start-line="171" selection-start-column="67" selection-end-line="171" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="11" column="39" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
         </state>
       </provider>
     </entry>
@@ -1013,30 +1074,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/ConfirmarIngestaActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="139" column="27" lean-forward="true" selection-start-line="139" selection-start-column="27" selection-end-line="139" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/broadcast/AlarmaReceiver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-108">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/background/LecturaSensorAsynctask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        <state relative-caret-position="160">
+          <caret line="72" column="17" selection-start-line="72" selection-start-column="17" selection-end-line="72" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/servicios/PersistenciaLocal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="65" selection-start-line="65" selection-end-line="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="115" selection-start-line="115" selection-end-line="115" />
         </state>
       </provider>
     </entry>

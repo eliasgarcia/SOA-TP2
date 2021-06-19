@@ -19,7 +19,7 @@ import static android.content.Context.SENSOR_SERVICE;
 public class LecturaSensorAsynctask extends AsyncTask<Void, Void, Void> {
     private SensorManager sensorManager;
     private Float lux;
-    private Float proximidad;
+    //private Float proximidad;
     private Context mContext;
     private String email;
     private String ingesta;
@@ -37,15 +37,16 @@ public class LecturaSensorAsynctask extends AsyncTask<Void, Void, Void> {
         public void onSensorChanged(SensorEvent sensorEvent) {
             synchronized (this) {
                 float valor = sensorEvent.values[0];
-                if (lux != null && proximidad != null) {
+                if (lux != null /*&& proximidad != null*/) {
                     sensorManager.unregisterListener(sensorListener);
                 }
                 if (sensorEvent.sensor.getType() == Sensor.TYPE_LIGHT) {
                     lux = valor;
                 }
-                if (sensorEvent.sensor.getType() == Sensor.TYPE_PROXIMITY) {
+               /* if (sensorEvent.sensor.getType() == Sensor.TYPE_PROXIMITY) {
                     proximidad = valor;
                 }
+                */
             }
         }
 
@@ -58,14 +59,14 @@ public class LecturaSensorAsynctask extends AsyncTask<Void, Void, Void> {
     @Override
     protected Void doInBackground(Void... voids) {
         sensorManager.registerListener(sensorListener, sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT), SensorManager.SENSOR_DELAY_NORMAL);
-        sensorManager.registerListener(sensorListener, sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY), SensorManager.SENSOR_DELAY_NORMAL);
+        //sensorManager.registerListener(sensorListener, sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY), SensorManager.SENSOR_DELAY_NORMAL);
         return null;
     }
 
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-        //asumno que tiene el celular en pantalon.
-        if (lux < 30 && proximidad < 2) {
+        //asumo que tiene el celular en pantalon.
+        if (lux > 30 /*&& proximidad < 2*/) {
             Log.i("SensorLuzAsync", "Sonar Alarma");
             Intent i = new Intent();
             i.setClass(mContext, ConfirmarIngestaActivity.class);
@@ -75,8 +76,8 @@ public class LecturaSensorAsynctask extends AsyncTask<Void, Void, Void> {
             mContext.startActivity(i);
         } else {
             //simplemente tirar una notificacion y guardar la ingesta con estado false
-            Log.i("SensorLuzService", "Es de noche. Luz:" + lux + ",prox:" + proximidad);
-            Toast.makeText(mContext, "Es de noche. Luz:" + lux + ",prox:" + proximidad, Toast.LENGTH_LONG).show();
+            Log.i("SensorLuzService", "Es de noche. Luz:" + lux); //+ ",prox:" + proximidad);
+            Toast.makeText(mContext, "Es de noche. Luz:" + lux/* + ",prox:" + proximidad*/, Toast.LENGTH_LONG).show();
         }
     }
 

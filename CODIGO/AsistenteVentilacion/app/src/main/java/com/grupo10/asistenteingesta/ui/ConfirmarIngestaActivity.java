@@ -38,7 +38,7 @@ public class ConfirmarIngestaActivity extends AppCompatActivity {
     private Ingesta ingesta;
     private SensorManager sensorManager;
     private MediaPlayer mediaPlayer;
-
+    private String tipoIngesta;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,14 +53,24 @@ public class ConfirmarIngestaActivity extends AppCompatActivity {
         btnRechazaIngesta.setOnClickListener(botonesListeners);
         persistenciaLocal = persistenciaLocal.getInstancia(this);
         bundle = getIntent().getExtras();
-        if(Constante.MEDICAMENTO.name().equals(bundle.getString(Constante.TIPO_INGESTA.name()))){
+        tipoIngesta = bundle.getString(Constante.TIPO_INGESTA.name());
+        if(Constante.MEDICAMENTO.name().equals(tipoIngesta)){
             ingesta = persistenciaLocal.getMedicamento();
         }else{
             ingesta = persistenciaLocal.getBebida();
         }
         sensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
         cargarLabels();
-        mediaPlayer = MediaPlayer.create(this, R.raw.alarma);
+        sonarAlarma();
+    }
+
+    private void sonarAlarma(){
+        if(Constante.MEDICAMENTO.name().equals(tipoIngesta)){
+            mediaPlayer = MediaPlayer.create(this, R.raw.sonido_sirena);
+        }else{
+            mediaPlayer = MediaPlayer.create(this, R.raw.sonido_agua);
+
+        }
         mediaPlayer.start();
     }
 
@@ -122,10 +132,12 @@ public class ConfirmarIngestaActivity extends AppCompatActivity {
 
 
     private void  confirmaIngesta(){
+        mediaPlayer.stop();
         guardarEstadoIngesta(Boolean.TRUE);
     }
 
     private void rechazaIngesta(){
+        mediaPlayer.stop();
         guardarEstadoIngesta(Boolean.FALSE);
     }
 
