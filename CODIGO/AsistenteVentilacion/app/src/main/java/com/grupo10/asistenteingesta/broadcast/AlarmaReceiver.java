@@ -31,9 +31,6 @@ public class AlarmaReceiver extends BroadcastReceiver {
         Bundle bundle = intent.getExtras();
         email = bundle.getString(Constante.EMAIL.name());
         tipoIngesta = bundle.getString(Constante.TIPO_INGESTA.name());
-        Intent i = new Intent(context,ConfirmarIngestaActivity.class);
-        i.putExtra(Constante.EMAIL.name(),email);
-        i.putExtra(Constante.TIPO_INGESTA.name(),tipoIngesta);
 
         notificationManager = (NotificationManager) context.getSystemService(Context. NOTIFICATION_SERVICE ) ;
         NotificationChannel notificationChannel = new NotificationChannel( NOTIFICATION_CHANNEL_ID , "NOTIFICATION_CHANNEL_NAME" , NotificationManager. IMPORTANCE_HIGH) ;
@@ -42,12 +39,13 @@ public class AlarmaReceiver extends BroadcastReceiver {
         notificationManager.notify(NOTIFICATION_ID , getNotification("Alarma notiff!",context)) ;
 
         persistenciaLocal = PersistenciaLocal.getInstancia(context);
-        //todo: cambiar por beebida
         if(Constante.BEBIDA.name().equals(bundle.getString(Constante.TIPO_INGESTA.name()))){
             LecturaSensorAsynctask sensorAsyncTask = new LecturaSensorAsynctask(context,email,tipoIngesta);
             sensorAsyncTask.execute();
-
         }else{
+            Intent i = new Intent(context,ConfirmarIngestaActivity.class);
+            i.putExtra(Constante.EMAIL.name(),email);
+            i.putExtra(Constante.TIPO_INGESTA.name(),tipoIngesta);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(i);
         }

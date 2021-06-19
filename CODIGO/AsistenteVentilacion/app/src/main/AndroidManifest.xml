@@ -20,9 +20,8 @@
             android:enabled="true"
             android:exported="true"></receiver>
 
-        <activity android:name=".ui.EditarIngestaBebidaActivity" />
         <activity android:name=".ui.ConfirmarIngestaActivity" />
-        <activity android:name=".ui.EditarIngestaMedicamentoActivity" />
+        <activity android:name=".ui.EditarIngestaActivity" />
         <activity android:name=".ui.MainActivity" />
         <activity android:name=".ui.EnviarSmsActivity">
             <intent-filter>

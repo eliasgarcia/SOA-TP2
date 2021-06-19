@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.grupo10.asistenteingesta.R;
+import com.grupo10.asistenteingesta.constantes.Constante;
 import com.grupo10.asistenteingesta.modelo.EstadoIngesta;
 import com.grupo10.asistenteingesta.modelo.Historial;
 import com.grupo10.asistenteingesta.modelo.Ingesta;
@@ -69,7 +70,8 @@ public class MainActivity extends AppCompatActivity {
             switch (v.getId())
             {
                 case R.id.btnEditarMedicamento:
-                    intent = new Intent(MainActivity.this, EditarIngestaMedicamentoActivity.class);
+                    intent = new Intent(MainActivity.this, EditarIngestaActivity.class);
+                    intent.putExtra(Constante.TIPO_INGESTA.name(), Constante.MEDICAMENTO.name());
                     startActivity(intent);
                     break;
                 case R.id.btnEliminarMedicamento:
@@ -77,7 +79,8 @@ public class MainActivity extends AppCompatActivity {
                     setMedicamento();
                     break;
                 case R.id.btnEditarBebida:
-                    intent = new Intent(MainActivity.this, EditarIngestaBebidaActivity.class);
+                    intent = new Intent(MainActivity.this, EditarIngestaActivity.class);
+                    intent.putExtra(Constante.TIPO_INGESTA.name(), Constante.BEBIDA.name());
                     startActivity(intent);
                     break;
                 case R.id.btnEliminarBebida:

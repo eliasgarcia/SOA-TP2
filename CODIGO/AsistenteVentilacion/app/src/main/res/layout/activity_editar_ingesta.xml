@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.EditarIngestaMedicamentoActivity">
+    tools:context=".ui.EditarIngestaActivity">
 
     <ProgressBar
-        android:id="@+id/pgbEditarIngestaMedicamento"
+        android:id="@+id/pgbEditarIngesta"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView12"
+            android:id="@+id/txtTipoIngesta"
             android:layout_width="212dp"
             android:layout_height="40dp"
             android:text="MEDICAMENTO"
@@ -37,7 +37,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/txtMedicamentoNombreNuevo"
+            android:id="@+id/txtIngestaNombreNuevo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30sp"
@@ -46,7 +46,7 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/txtMedicamentoFrecuenciaNuevo"
+            android:id="@+id/txtIngestaFrecuenciaNuevo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30sp"
@@ -61,16 +61,18 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btnGuardarIngestaMedicamento"
+                android:id="@+id/btnConfirmarIngesta"
                 android:layout_width="109dp"
                 android:layout_height="match_parent"
-                android:text="Guardar" />
+                android:background="#1AA90D"
+                android:text="Confirmar" />
 
             <Button
-                android:id="@+id/btnCancelarIngestaMedicamento"
-                android:layout_width="wrap_content"
-                android:layout_height="60dp"
+                android:id="@+id/btnCancelarIngesta"
+                android:layout_width="108dp"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="20sp"
+                android:background="#F4511E"
                 android:text="Cancelar" />
         </LinearLayout>
     </LinearLayout>

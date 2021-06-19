@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.grupo10.asistenteingesta.broadcast.AlarmaReceiver;
@@ -22,29 +23,35 @@ import com.grupo10.asistenteingesta.modelo.Ingesta;
 import com.grupo10.asistenteingesta.modelo.Usuario;
 import com.grupo10.asistenteingesta.servicios.PersistenciaLocal;
 
-public class EditarIngestaMedicamentoActivity extends AppCompatActivity {
+public class EditarIngestaActivity extends AppCompatActivity {
 
-    private EditText txtMedicamentoNombre;
-    private EditText txtMedicamentoFrecuencia;
+    private TextView txtTipoIngesta;
+    private EditText txtTipoIngestaNombre;
+    private EditText txtTipoIngestaFrecuencia;
     private Button btnGuardarIngesta;
     private Button btnCancelarIngesta;
     private ProgressBar progressBar;
     private static PersistenciaLocal persistenciaLocal;
+    private Bundle bundle;
+    private String tipoIngesta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_editar_ingesta_medicamento);
-        txtMedicamentoNombre = findViewById(R.id.txtMedicamentoNombreNuevo);
-        txtMedicamentoFrecuencia = findViewById(R.id.txtMedicamentoFrecuenciaNuevo);
-        btnCancelarIngesta = findViewById(R.id.btnCancelarIngestaMedicamento);
-        btnGuardarIngesta = findViewById(R.id.btnGuardarIngestaMedicamento);
+        setContentView(R.layout.activity_editar_ingesta);
+        txtTipoIngestaNombre = findViewById(R.id.txtIngestaNombreNuevo);
+        txtTipoIngestaFrecuencia = findViewById(R.id.txtIngestaFrecuenciaNuevo);
+        btnCancelarIngesta = findViewById(R.id.btnCancelarIngesta);
+        btnGuardarIngesta = findViewById(R.id.btnConfirmarIngesta);
+        txtTipoIngesta = findViewById(R.id.txtTipoIngesta);
         btnCancelarIngesta.setOnClickListener(botonesListeners);
         btnGuardarIngesta.setOnClickListener(botonesListeners);
         persistenciaLocal = persistenciaLocal.getInstancia(this);
-        progressBar = findViewById(R.id.pgbEditarIngestaMedicamento);
+        progressBar = findViewById(R.id.pgbEditarIngesta);
         progressBar.setVisibility(View.INVISIBLE);
-        setMedicamento();
+        bundle = getIntent().getExtras();
+        tipoIngesta = bundle.getString(Constante.TIPO_INGESTA.name());
+        setValoresTipoIngesta();
 
     }
 
@@ -53,12 +60,11 @@ public class EditarIngestaMedicamentoActivity extends AppCompatActivity {
         public void onClick(View v) {
             switch (v.getId())
             {
-                case R.id.btnCancelarIngestaMedicamento:
+                case R.id.btnCancelarIngesta:
                     finish();
                     break;
-                case R.id.btnGuardarIngestaMedicamento:
+                case R.id.btnConfirmarIngesta:
                     validarYGuardarIngestas();
-                    finish();
                     break;
                 default:
                     Toast.makeText(getApplicationContext(),"Error en Listener de botones",Toast.LENGTH_LONG).show();
@@ -70,33 +76,42 @@ public class EditarIngestaMedicamentoActivity extends AppCompatActivity {
     private void validarYGuardarIngestas(){
         if(camposValidos()){
             activarLoading();
-            Ingesta medicamento = new Ingesta();
-            medicamento.setFrecuencia(Integer.parseInt(txtMedicamentoFrecuencia.getText().toString()));
-            medicamento.setNombre(txtMedicamentoNombre.getText().toString());
-            persistenciaLocal.setMedicamento(medicamento);
+            Ingesta ingesta = new Ingesta();
+            ingesta.setFrecuencia(Integer.parseInt(txtTipoIngestaFrecuencia.getText().toString()));
+            ingesta.setNombre(txtTipoIngestaNombre.getText().toString());
+            if(Constante.BEBIDA.name().equals(tipoIngesta)){
+                persistenciaLocal.setBebida(ingesta);
+            }else {
+                persistenciaLocal.setMedicamento(ingesta);
+            }
             setAlarma();
+            finish();
         }
     }
 
     private boolean camposValidos(){
         boolean esValido = true;
-        if(TextUtils.isEmpty(txtMedicamentoFrecuencia.getText())){
-            txtMedicamentoFrecuencia.setError("Debe ingresar una frecuencia en minutos. Ej: 2");
+        if(TextUtils.isEmpty(txtTipoIngestaFrecuencia.getText())){
+            txtTipoIngestaFrecuencia.setError("Debe ingresar una frecuencia en minutos. Ej: 2");
             esValido = false;
         }
-        if(TextUtils.isEmpty(txtMedicamentoNombre.getText())){
-            txtMedicamentoNombre.setError("Debe ingresar un nombre.");
+        if(TextUtils.isEmpty(txtTipoIngestaNombre.getText())){
+            txtTipoIngestaNombre.setError("Debe ingresar un nombre.");
             esValido = false;
         }
         return esValido;
     }
 
-    private void setMedicamento(){
-        Ingesta medicamento = persistenciaLocal.getMedicamento();
-        if(medicamento != null){
-            txtMedicamentoFrecuencia.setText(medicamento.getFrecuencia().toString());
-            txtMedicamentoNombre.setText(medicamento.getNombre());
+    private void setValoresTipoIngesta(){
+        txtTipoIngesta.setText(tipoIngesta);
+        Ingesta ingesta;
+        if(Constante.BEBIDA.name().equals(tipoIngesta)){
+            ingesta = persistenciaLocal.getBebida();
+        }else{
+            ingesta = persistenciaLocal.getMedicamento();
         }
+        txtTipoIngestaFrecuencia.setText(ingesta!=null?ingesta.getFrecuencia().toString():"");
+        txtTipoIngestaNombre.setText(ingesta!=null?ingesta.getNombre():"");
     }
 
     private void activarLoading(){
@@ -112,7 +127,7 @@ public class EditarIngestaMedicamentoActivity extends AppCompatActivity {
         AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
         Intent intent = new Intent(this, AlarmaReceiver.class);
         intent.putExtra(Constante.EMAIL.name(), usuario.getEmail());
-        intent.putExtra(Constante.TIPO_INGESTA.name(), Constante.MEDICAMENTO.name());
+        intent.putExtra(Constante.TIPO_INGESTA.name(), tipoIngesta);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, REQUEST_CODE, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime()
                 + tiempoEnMilis, pendingIntent);
