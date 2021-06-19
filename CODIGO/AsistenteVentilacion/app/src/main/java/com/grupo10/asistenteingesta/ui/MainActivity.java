@@ -3,7 +3,9 @@ package com.grupo10.asistenteingesta.ui;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
 import android.app.Dialog;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -12,13 +14,13 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ProgressBar;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.grupo10.asistenteingesta.R;
+import com.grupo10.asistenteingesta.servicios.AlarmaService;
 import com.grupo10.asistenteingesta.util.Constante;
 import com.grupo10.asistenteingesta.modelo.EstadoIngesta;
 import com.grupo10.asistenteingesta.modelo.Historial;
@@ -39,9 +41,9 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton btnEditarBebida;
     private ImageButton btnEliminarBebida;
     private Button btnEliminarHistorial;
-    private ProgressBar progressBar;
     private TableLayout tabla;
     private static PersistenciaLocal persistenciaLocal;
+    private AlarmaService alarmaService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
         lblMedicamentoNombre = findViewById(R.id.lblMedicamentoNombre);
         btnEditarMedicamento = findViewById(R.id.btnEditarMedicamento);
         btnEliminarMedicamento = findViewById(R.id.btnEliminarMedicamento);
-        ;
         btnEditarMedicamento.setOnClickListener(botonesListeners);
         btnEliminarMedicamento.setOnClickListener(botonesListeners);
 
@@ -59,13 +60,13 @@ public class MainActivity extends AppCompatActivity {
         lblBebidaNombre = findViewById(R.id.lblBebidaNombre);
         btnEditarBebida = findViewById(R.id.btnEditarBebida);
         btnEliminarBebida = findViewById(R.id.btnEliminarBebida);
-        ;
         btnEditarBebida.setOnClickListener(botonesListeners);
         btnEliminarBebida.setOnClickListener(botonesListeners);
         btnEliminarHistorial = findViewById(R.id.btnLimpiarHistorial);
         btnEliminarHistorial.setOnClickListener(botonesListeners);
         tabla = findViewById(R.id.table);
         persistenciaLocal = persistenciaLocal.getInstancia(this);
+        alarmaService = alarmaService.getInstance(this);
     }
 
     private View.OnClickListener botonesListeners = new View.OnClickListener() {
@@ -147,7 +148,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView getCell(String text, int color) {
         TextView cell = new TextView(this);
         cell.setGravity(Gravity.CENTER);
-        //cell.setTextSize(25);
         cell.setTextSize(15);
         cell.setText(text);
         cell.setBackgroundColor(color);
@@ -190,9 +190,11 @@ public class MainActivity extends AppCompatActivity {
                 switch (which) {
                     case DialogInterface.BUTTON_POSITIVE:
                         if (Constante.BEBIDA.equals(tipoIngesta)) {
+                            alarmaService.eliminarAlarmaSiExiste(Constante.BEBIDA);
                             persistenciaLocal.eliminarBebida();
                             setBebida();
                         } else {
+                            alarmaService.eliminarAlarmaSiExiste(Constante.MEDICAMENTO);
                             persistenciaLocal.eliminarMedicamento();
                             setMedicamento();
                         }

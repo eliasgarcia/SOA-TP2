@@ -1,12 +1,7 @@
 package com.grupo10.asistenteingesta.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
@@ -16,8 +11,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.grupo10.asistenteingesta.broadcast.AlarmaReceiver;
 import com.grupo10.asistenteingesta.R;
+import com.grupo10.asistenteingesta.servicios.AlarmaService;
 import com.grupo10.asistenteingesta.util.Constante;
 import com.grupo10.asistenteingesta.modelo.Ingesta;
 import com.grupo10.asistenteingesta.modelo.Usuario;
@@ -34,6 +29,7 @@ public class EditarIngestaActivity extends AppCompatActivity {
     private static PersistenciaLocal persistenciaLocal;
     private Bundle bundle;
     private String tipoIngesta;
+    private AlarmaService alarmaService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +48,7 @@ public class EditarIngestaActivity extends AppCompatActivity {
         bundle = getIntent().getExtras();
         tipoIngesta = bundle.getString(Constante.TIPO_INGESTA.name());
         setValoresTipoIngesta();
+        alarmaService = alarmaService.getInstance(this);
 
     }
 
@@ -120,16 +117,10 @@ public class EditarIngestaActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
     }
 
-    public void setAlarma() {
+    private void setAlarma() {
+        alarmaService.eliminarAlarmaSiExiste(Constante.MEDICAMENTO.name().equals(tipoIngesta)?Constante.MEDICAMENTO:Constante.BEBIDA);
         Usuario usuario = persistenciaLocal.getUsuario();
-        long tiempoEnMilis = 5000; //5 segundos
-        Integer REQUEST_CODE = 0; //TODO
-        AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
-        Intent intent = new Intent(this, AlarmaReceiver.class);
-        intent.putExtra(Constante.EMAIL.name(), usuario.getEmail());
-        intent.putExtra(Constante.TIPO_INGESTA.name(), tipoIngesta);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, REQUEST_CODE, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-        am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime()
-                + tiempoEnMilis, pendingIntent);
+        alarmaService.crearAlarma(Constante.MEDICAMENTO.name().equals(tipoIngesta)?Constante.MEDICAMENTO:Constante.BEBIDA,
+                usuario.getEmail(),Integer.valueOf(txtTipoIngestaFrecuencia.getText().toString()));
     }
 }

@@ -6,7 +6,6 @@ import android.graphics.PorterDuff;
 import android.net.ConnectivityManager;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class InternetStatus {

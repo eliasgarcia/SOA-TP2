@@ -5,8 +5,11 @@
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.hardware.sensor.accelerometer" android:required="true"/>
-    <uses-permission android:name= "android.permission.VIBRATE" />
+    <uses-permission
+        android:name="android.hardware.sensor.accelerometer"
+        android:required="true" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,10 +18,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".ui.LecturasSensorActivity"></activity>
+
         <receiver
             android:name=".broadcast.AlarmaReceiver"
             android:enabled="true"
-            android:exported="true"></receiver>
+            android:exported="true" />
 
         <activity android:name=".ui.ConfirmarIngestaActivity" />
         <activity android:name=".ui.EditarIngestaActivity" />
