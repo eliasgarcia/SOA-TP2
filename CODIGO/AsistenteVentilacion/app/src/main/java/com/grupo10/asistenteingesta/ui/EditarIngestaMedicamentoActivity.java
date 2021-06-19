@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.grupo10.asistenteingesta.broadcast.AlarmaReceiver;
 import com.grupo10.asistenteingesta.R;
+import com.grupo10.asistenteingesta.constantes.Constante;
 import com.grupo10.asistenteingesta.modelo.Ingesta;
 import com.grupo10.asistenteingesta.modelo.Usuario;
 import com.grupo10.asistenteingesta.servicios.PersistenciaLocal;
@@ -110,8 +111,8 @@ public class EditarIngestaMedicamentoActivity extends AppCompatActivity {
         Integer REQUEST_CODE = 0; //TODO
         AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
         Intent intent = new Intent(this, AlarmaReceiver.class);
-        intent.putExtra("EMAIL", usuario.getEmail());
-        intent.putExtra("INGESTA", "MEDICAMENTO");
+        intent.putExtra(Constante.EMAIL.name(), usuario.getEmail());
+        intent.putExtra(Constante.TIPO_INGESTA.name(), Constante.MEDICAMENTO.name());
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, REQUEST_CODE, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime()
                 + tiempoEnMilis, pendingIntent);

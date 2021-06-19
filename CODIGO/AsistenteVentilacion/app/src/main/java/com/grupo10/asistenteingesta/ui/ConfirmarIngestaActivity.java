@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.grupo10.asistenteingesta.R;
+import com.grupo10.asistenteingesta.constantes.Constante;
 import com.grupo10.asistenteingesta.modelo.EstadoIngesta;
 import com.grupo10.asistenteingesta.modelo.Historial;
 import com.grupo10.asistenteingesta.modelo.Ingesta;
@@ -52,7 +53,7 @@ public class ConfirmarIngestaActivity extends AppCompatActivity {
         btnRechazaIngesta.setOnClickListener(botonesListeners);
         persistenciaLocal = persistenciaLocal.getInstancia(this);
         bundle = getIntent().getExtras();
-        if("MEDICAMENTO".equals(bundle.getString("INGESTA"))){
+        if(Constante.MEDICAMENTO.name().equals(bundle.getString(Constante.TIPO_INGESTA.name()))){
             ingesta = persistenciaLocal.getMedicamento();
         }else{
             ingesta = persistenciaLocal.getBebida();
@@ -114,7 +115,7 @@ public class ConfirmarIngestaActivity extends AppCompatActivity {
     };
 
     private void cargarLabels(){
-        lblTipoIngestaConfirmar.setText(bundle.getString("INGESTA"));
+        lblTipoIngestaConfirmar.setText(bundle.getString(Constante.TIPO_INGESTA.name()));
         lblIngestaConfirmaNombre.setText("Nombre: " + ingesta.getNombre());
         lblIngestaConfirmaFecuencia.setText("Frecuencia: " + ingesta.getFrecuencia());
     }

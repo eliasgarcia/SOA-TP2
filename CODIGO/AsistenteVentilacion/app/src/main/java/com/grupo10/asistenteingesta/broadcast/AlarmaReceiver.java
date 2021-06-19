@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.core.app.NotificationCompat;
 
 import com.grupo10.asistenteingesta.R;
+import com.grupo10.asistenteingesta.constantes.Constante;
 import com.grupo10.asistenteingesta.servicios.PersistenciaLocal;
 import com.grupo10.asistenteingesta.ui.ConfirmarIngestaActivity;
 import com.grupo10.asistenteingesta.background.LecturaSensorAsynctask;
@@ -22,13 +23,17 @@ public class AlarmaReceiver extends BroadcastReceiver {
     private final static String default_notification_channel_id = "default" ;
     public static int NOTIFICATION_ID = 1 ;
     private static PersistenciaLocal persistenciaLocal;
+    private String tipoIngesta;
+    private String email;
     @Override
     public void onReceive(Context context, Intent intent) {
         Toast.makeText(context, "ALARMAAAAAAAAAAAAa", Toast.LENGTH_LONG).show();
         Bundle bundle = intent.getExtras();
+        email = bundle.getString(Constante.EMAIL.name());
+        tipoIngesta = bundle.getString(Constante.TIPO_INGESTA.name());
         Intent i = new Intent(context,ConfirmarIngestaActivity.class);
-        i.putExtra("EMAIL",bundle.getString("EMAIL"));
-        i.putExtra("INGESTA",bundle.getString("INGESTA"));
+        i.putExtra(Constante.EMAIL.name(),email);
+        i.putExtra(Constante.TIPO_INGESTA.name(),tipoIngesta);
 
         notificationManager = (NotificationManager) context.getSystemService(Context. NOTIFICATION_SERVICE ) ;
         NotificationChannel notificationChannel = new NotificationChannel( NOTIFICATION_CHANNEL_ID , "NOTIFICATION_CHANNEL_NAME" , NotificationManager. IMPORTANCE_HIGH) ;
@@ -38,16 +43,8 @@ public class AlarmaReceiver extends BroadcastReceiver {
 
         persistenciaLocal = PersistenciaLocal.getInstancia(context);
         //todo: cambiar por beebida
-        if("MEDICAMENTO".equals(bundle.getString("INGESTA"))){
-            //Toast.makeText(context, "NO se muestra alarma porque es de noche", Toast.LENGTH_LONG).show();
-            /*Intent intentbebida = new Intent(context, SensorLuzService.class);
-            intentbebida.putExtra("EMAIL",bundle.getString("EMAIL"));
-            intentbebida.putExtra("INGESTA",bundle.getString("INGESTA"));
-            context.startService(intentbebida);
-            */ //Hasta aca teniamos con Service..aunque tenia errores random
-
-            //Desde aca es con asyncTask
-            LecturaSensorAsynctask sensorAsyncTask = new LecturaSensorAsynctask(context,bundle.getString("EMAIL"),bundle.getString("INGESTA"));
+        if(Constante.BEBIDA.name().equals(bundle.getString(Constante.TIPO_INGESTA.name()))){
+            LecturaSensorAsynctask sensorAsyncTask = new LecturaSensorAsynctask(context,email,tipoIngesta);
             sensorAsyncTask.execute();
 
         }else{

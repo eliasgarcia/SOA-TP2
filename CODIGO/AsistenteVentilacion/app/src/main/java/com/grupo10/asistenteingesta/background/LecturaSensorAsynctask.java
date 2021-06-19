@@ -10,6 +10,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.grupo10.asistenteingesta.constantes.Constante;
 import com.grupo10.asistenteingesta.ui.ConfirmarIngestaActivity;
 
 import static android.content.Context.SENSOR_SERVICE;
@@ -69,8 +70,8 @@ public class LecturaSensorAsynctask extends AsyncTask<Void, Void, Void> {
             Intent i = new Intent();
             i.setClass(mContext, ConfirmarIngestaActivity.class);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            i.putExtra("EMAIL", email);
-            i.putExtra("INGESTA", ingesta);
+            i.putExtra(Constante.EMAIL.name(), email);
+            i.putExtra(Constante.TIPO_INGESTA.name(), ingesta);
             mContext.startActivity(i);
         } else {
             //simplemente tirar una notificacion y guardar la ingesta con estado false

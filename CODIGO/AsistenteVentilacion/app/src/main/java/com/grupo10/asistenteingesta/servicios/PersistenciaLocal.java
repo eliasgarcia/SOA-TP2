@@ -105,24 +105,6 @@ public class PersistenciaLocal {
         editor.apply();
     }
 
-    public void setValorLux(float lux){
-        editor.putFloat(KEY_LUX, lux);
-        editor.apply();
-    }
-
-    public float getValorLux(){
-        return sPreference.getFloat(KEY_LUX, 0.0f);
-    }
-
-    public float getValorProximidad(){
-        return sPreference.getFloat(KEY_PROXIMIDAD, 0.0f);
-    }
-
-    public void setValorProximidad(float proximidad){
-        editor.putFloat(KEY_PROXIMIDAD, proximidad);
-        editor.apply();
-    }
-
     //deberia limpiarse cuando ingresa un nuevo usuario;
     public void limpiar(){
         editor.clear();

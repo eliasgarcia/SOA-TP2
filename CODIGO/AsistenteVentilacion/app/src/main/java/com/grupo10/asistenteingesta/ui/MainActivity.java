@@ -120,7 +120,6 @@ public class MainActivity extends AppCompatActivity {
     private void setTabla(){
         Historial historial = persistenciaLocal.getHistorial();
         List<EstadoIngesta> ingestas;
-        EstadoIngesta estadoIngesta;
         if(historial!=null){
             ingestas = historial.getIngestas() != null?historial.getIngestas(): new ArrayList<>();
         }else{
