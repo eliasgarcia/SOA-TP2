@@ -1,5 +1,8 @@
 package com.grupo10.asistenteingesta.background;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.hardware.Sensor;
@@ -10,6 +13,9 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.core.app.NotificationCompat;
+
+import com.grupo10.asistenteingesta.R;
 import com.grupo10.asistenteingesta.util.Constante;
 import com.grupo10.asistenteingesta.ui.ConfirmarIngestaActivity;
 
@@ -23,7 +29,10 @@ public class LecturaSensorAsynctask extends AsyncTask<Void, Void, Void> {
     private Context mContext;
     private String email;
     private String ingesta;
-
+    private NotificationManager notificationManager;
+    public static final String NOTIFICATION_CHANNEL_ID = "10001" ;
+    private final static String default_notification_channel_id = "default" ;
+    public static int NOTIFICATION_ID = 1 ;
 
     public LecturaSensorAsynctask(Context context, String email, String ingesta) {
         super();
@@ -65,7 +74,6 @@ public class LecturaSensorAsynctask extends AsyncTask<Void, Void, Void> {
 
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-        //asumo que tiene el celular en pantalon.
         if (lux > 30 /*&& proximidad < 2*/) {
             Log.i("SensorLuzAsync", "Sonar Alarma");
             Intent i = new Intent();
@@ -76,7 +84,8 @@ public class LecturaSensorAsynctask extends AsyncTask<Void, Void, Void> {
             mContext.startActivity(i);
         } else {
             //simplemente tirar una notificacion y guardar la ingesta con estado false
-            Log.i("SensorLuzService", "Es de noche. Luz:" + lux); //+ ",prox:" + proximidad);
+            //Log.i("SensorLuzService", "Es de noche. Luz:" + lux); //+ ",prox:" + proximidad);
+            notificarAutoRechazoAlarma();
             Toast.makeText(mContext, "Es de noche. Luz:" + lux/* + ",prox:" + proximidad*/, Toast.LENGTH_LONG).show();
         }
     }
@@ -85,5 +94,23 @@ public class LecturaSensorAsynctask extends AsyncTask<Void, Void, Void> {
     protected void onPreExecute() {
         super.onPreExecute();
         sensorManager = (SensorManager) mContext.getSystemService(SENSOR_SERVICE);
+    }
+
+    private void notificarAutoRechazoAlarma(){
+        notificationManager = (NotificationManager) mContext.getSystemService(Context. NOTIFICATION_SERVICE ) ;
+        NotificationChannel notificationChannel = new NotificationChannel( NOTIFICATION_CHANNEL_ID , "NOTIFICATION_CHANNEL_NAME" , NotificationManager. IMPORTANCE_HIGH) ;
+        //assert notificationManager != null;
+        notificationManager.createNotificationChannel(notificationChannel) ;
+        notificationManager.notify(NOTIFICATION_ID , getNotification("La alarma no sonará debido a que es de noche.",mContext)) ;
+    }
+
+    private Notification getNotification (String content, Context context) {
+        NotificationCompat.Builder builder = new NotificationCompat.Builder( context, default_notification_channel_id ) ;
+        builder.setContentTitle( "Asistente de Ingestas" ) ;
+        builder.setContentText(content) ;
+        builder.setSmallIcon(R.drawable. ic_launcher_foreground ) ;
+        builder.setAutoCancel( true ) ;
+        builder.setChannelId( NOTIFICATION_CHANNEL_ID ) ;
+        return builder.build() ;
     }
 }

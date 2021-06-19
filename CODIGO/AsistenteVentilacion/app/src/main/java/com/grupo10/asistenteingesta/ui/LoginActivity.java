@@ -18,6 +18,7 @@ import com.grupo10.asistenteingesta.dto.ErrorDTO;
 import com.grupo10.asistenteingesta.dto.LoginDTO;
 import com.grupo10.asistenteingesta.modelo.Usuario;
 import com.grupo10.asistenteingesta.response.LoginResponse;
+import com.grupo10.asistenteingesta.servicios.InternetStatus;
 import com.grupo10.asistenteingesta.servicios.PersistenciaLocal;
 import com.grupo10.asistenteingesta.util.JsonConverter;
 
@@ -39,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView txtContrasenia;
     private LoginClient loginClient;
     private static PersistenciaLocal persistenciaLocal;
+    private InternetStatus internetStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
         progressBar.setVisibility(View.INVISIBLE);
         loginClient = LoginClientBuilder.getClient();
         persistenciaLocal = persistenciaLocal.getInstancia(this);
-
+        internetStatus = internetStatus.getInstance(this);
         Log.i("Ejecuto","Ejecuto onCreate");
         setListeners();
     }
@@ -113,6 +115,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void login(){
+        if(!internetStatus.isConnected()){
+            return;
+        }
         progressBar.setVisibility(View.VISIBLE);
        // getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
        //         WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);

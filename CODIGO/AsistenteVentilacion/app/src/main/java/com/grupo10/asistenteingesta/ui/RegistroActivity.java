@@ -18,11 +18,10 @@ import com.grupo10.asistenteingesta.R;
 import com.grupo10.asistenteingesta.client.UsuarioClient;
 import com.grupo10.asistenteingesta.client.UsuarioClientBuilder;
 import com.grupo10.asistenteingesta.dto.ErrorDTO;
-import com.grupo10.asistenteingesta.dto.LoginDTO;
 import com.grupo10.asistenteingesta.dto.UsuarioDTO;
 import com.grupo10.asistenteingesta.modelo.Usuario;
-import com.grupo10.asistenteingesta.response.LoginResponse;
 import com.grupo10.asistenteingesta.response.RegistroResponse;
+import com.grupo10.asistenteingesta.servicios.InternetStatus;
 import com.grupo10.asistenteingesta.servicios.PersistenciaLocal;
 import com.grupo10.asistenteingesta.util.JsonConverter;
 
@@ -47,7 +46,7 @@ public class RegistroActivity extends AppCompatActivity {
     private UsuarioClient usuarioClient;
     private ProgressBar progressBar;
     private static PersistenciaLocal persistenciaLocal;
-
+    private InternetStatus internetStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +63,7 @@ public class RegistroActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.pgbRegistro);
         progressBar.setVisibility(View.INVISIBLE);
         persistenciaLocal = persistenciaLocal.getInstancia(this);
+        internetStatus = internetStatus.getInstance(this);
 
         Log.i("Ejecuto","Ejecuto onCreate");
     }
@@ -132,6 +132,9 @@ public class RegistroActivity extends AppCompatActivity {
         return usuarioDTO;
     }
     private void registrarUsuario(){
+        if(!internetStatus.isConnected()){
+            return;
+        }
         progressBar.setVisibility(View.VISIBLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
                 WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);

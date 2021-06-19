@@ -2,7 +2,9 @@ package com.grupo10.asistenteingesta.ui;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.os.BatteryManager;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.util.Log;
@@ -11,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -33,18 +36,20 @@ public class EnviarSmsActivity extends AppCompatActivity {
     private Intent intent;
     private Bundle bundle = new Bundle();
     private ProgressBar progressBar;
+    private TextView txtCargaBateria;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enviar_sms);
         intent = new Intent(EnviarSmsActivity.this, ValidarSmsActivity.class);
-        txtNroCelular = (EditText) findViewById(R.id.txtNroCelular);
-        btnEnviarSms = (Button) findViewById(R.id.btnEnviarSms);
+        txtNroCelular = findViewById(R.id.txtNroCelular);
+        btnEnviarSms = findViewById(R.id.btnEnviarSms);
         btnEnviarSms.setOnClickListener(botonesListeners);
         progressBar = findViewById(R.id.pgbEnviarSms);
         progressBar.setVisibility(View.INVISIBLE);
+        txtCargaBateria = findViewById(R.id.txtBateriaCarga);
         Log.i("Ejecuto","Ejecuto onCreate");
-
+        mostrarDatosBateria();
     }
 
     @Override
@@ -139,5 +144,14 @@ public class EnviarSmsActivity extends AppCompatActivity {
             default:
                 super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+    }
+
+    private void mostrarDatosBateria(){
+        IntentFilter iFilterBateria = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+        Intent estadoBateria = this.registerReceiver(null, iFilterBateria);
+        int nivel = estadoBateria.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
+        int escala = estadoBateria.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
+        float porcentajeBateria = nivel * 100 / (float)escala;
+        txtCargaBateria.setText((int)porcentajeBateria+ "%");
     }
 }

@@ -37,7 +37,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_delete_forever_black_24dp.xml" />
+                                                <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/device/ic_battery_std_black_24dp.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -50,6 +50,7 @@
                                               <map>
                                                 <entry key="color" value="000000" />
                                                 <entry key="opacityPercent" value="80" />
+                                                <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -59,9 +60,9 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="outputName" value="ic_action_eliminar" />
+                                      <entry key="outputName" value="ic_action_batery" />
                                       <entry key="theme" value="CUSTOM" />
-                                      <entry key="themeColor" value="ff2621" />
+                                      <entry key="themeColor" value="6cff2a" />
                                     </map>
                                   </option>
                                 </PersistentState>
