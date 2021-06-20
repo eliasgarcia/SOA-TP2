@@ -167,6 +167,7 @@ public class RegistroActivity extends AppCompatActivity {
     }
 
     private void registroNoExitoso(Response<RegistroResponse> response){
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         if(response.raw().code() != 400){
             Toast.makeText(RegistroActivity.this, "Hubo un error. Intente mas tarde.", Toast.LENGTH_SHORT).show();
             return;

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -119,8 +120,8 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
         progressBar.setVisibility(View.VISIBLE);
-       // getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
-       //         WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         LoginDTO loginDTO = new LoginDTO(txtEmail.getText().toString(), txtContrasenia.getText().toString());
         Call<LoginResponse> call = loginClient.login(loginDTO);
         call.enqueue(new Callback<LoginResponse>() {
@@ -147,6 +148,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void loginNoExitoso(Response<LoginResponse> response){
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         if(response.raw().code() != 400){
             Toast.makeText(LoginActivity.this, "Hubo un error. Intente mas tarde.", Toast.LENGTH_LONG).show();
             return;

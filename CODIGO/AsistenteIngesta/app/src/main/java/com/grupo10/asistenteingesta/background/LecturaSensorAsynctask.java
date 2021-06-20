@@ -74,7 +74,7 @@ public class LecturaSensorAsynctask extends AsyncTask<Void, Void, Void> {
 
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-        if (lux > 30 /*&& proximidad < 2*/) {
+        if (lux > 1 /*&& proximidad < 2*/) {
             Log.i("SensorLuzAsync", "Sonar Alarma");
             Intent i = new Intent();
             i.setClass(mContext, ConfirmarIngestaActivity.class);

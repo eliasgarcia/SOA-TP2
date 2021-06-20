@@ -10,7 +10,10 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,7 +41,9 @@ public class ConfirmarIngestaActivity extends AppCompatActivity {
     private Ingesta ingesta;
     private SensorManager sensorManager;
     private MediaPlayer mediaPlayer;
+    private Vibrator vibrator;
     private String tipoIngesta;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,15 +74,19 @@ public class ConfirmarIngestaActivity extends AppCompatActivity {
             mediaPlayer = MediaPlayer.create(this, R.raw.sonido_sirena);
         }else{
             mediaPlayer = MediaPlayer.create(this, R.raw.sonido_agua);
-
         }
+        vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        long[] pattern = {0, 100, 1000};
+        VibrationEffect vibrationEffect1 = VibrationEffect.createWaveform(pattern,0);
         mediaPlayer.start();
+        vibrator.vibrate(vibrationEffect1);
     }
 
     private SensorEventListener sensorListener = new SensorEventListener() {
         @Override
         public void onSensorChanged(SensorEvent sensorEvent) {
-            //Intent intent = new Intent(ConfirmarIngestaActivity.this,MainActivity.class);
+            Intent intent = new Intent(ConfirmarIngestaActivity.this,MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             synchronized (this) {
                 if (sensorEvent.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
                     float x = sensorEvent.values[0];
@@ -85,9 +94,10 @@ public class ConfirmarIngestaActivity extends AppCompatActivity {
                     float z = sensorEvent.values[2];
                     if (x > UMBRAL_SHAKE || y > UMBRAL_SHAKE || z > UMBRAL_SHAKE) {
                         Toast.makeText(ConfirmarIngestaActivity.this, "SHAKEEEEE", Toast.LENGTH_LONG).show();
+                        sensorManager.unregisterListener(sensorListener);
                         confirmaIngesta();
-                        //startActivity(intent);
-                        finish();//o unregister
+                        startActivity(intent);
+                        finish();
                     }
                 }
             }
@@ -105,14 +115,17 @@ public class ConfirmarIngestaActivity extends AppCompatActivity {
     {
         public void onClick(View v) {
             Intent intent = new Intent(ConfirmarIngestaActivity.this,MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             switch (v.getId())
             {
                 case R.id.btnConfirmaIngesta:
+                    bloquearComponenterPantalla();
                     confirmaIngesta();
                     startActivity(intent);
                     finish();
                     break;
                 case R.id.btnRechazaIngesta:
+                    bloquearComponenterPantalla();
                     rechazaIngesta();
                     startActivity(intent);
                     finish();
@@ -133,11 +146,13 @@ public class ConfirmarIngestaActivity extends AppCompatActivity {
 
     private void  confirmaIngesta(){
         mediaPlayer.stop();
+        vibrator.cancel();
         guardarEstadoIngesta(Boolean.TRUE);
     }
 
     private void rechazaIngesta(){
         mediaPlayer.stop();
+        vibrator.cancel();
         guardarEstadoIngesta(Boolean.FALSE);
     }
 
@@ -167,5 +182,10 @@ public class ConfirmarIngestaActivity extends AppCompatActivity {
     protected void onPause() {
         sensorManager.unregisterListener(sensorListener);
         super.onPause();
+    }
+
+    private void bloquearComponenterPantalla(){
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
     }
 }
