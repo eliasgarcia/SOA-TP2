@@ -3,6 +3,7 @@ package com.grupo10.asistenteingesta.ui;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -18,8 +19,11 @@ import com.grupo10.asistenteingesta.modelo.Ingesta;
 import com.grupo10.asistenteingesta.modelo.Usuario;
 import com.grupo10.asistenteingesta.servicios.PersistenciaLocal;
 
+import java.util.Calendar;
+
 public class EditarIngestaActivity extends AppCompatActivity {
 
+    private final static String TAG = "ACT_EDITAR_INGESTA";
     private TextView txtTipoIngesta;
     private EditText txtTipoIngestaNombre;
     private EditText txtTipoIngestaDistancia;
@@ -49,7 +53,7 @@ public class EditarIngestaActivity extends AppCompatActivity {
         tipoIngesta = bundle.getString(Constante.TIPO_INGESTA.name());
         setValoresTipoIngesta();
         alarmaService = alarmaService.getInstance(this);
-
+        Log.i(TAG,"Ejecuto onCreate");
     }
 
     private View.OnClickListener botonesListeners = new View.OnClickListener()
@@ -75,6 +79,9 @@ public class EditarIngestaActivity extends AppCompatActivity {
             Ingesta ingesta = new Ingesta();
             ingesta.setDistancia(Integer.parseInt(txtTipoIngestaDistancia.getText().toString()));
             ingesta.setNombre(txtTipoIngestaNombre.getText().toString());
+            Calendar proxima = Calendar.getInstance();
+            proxima.add(Calendar.MINUTE,ingesta.getDistancia());
+            ingesta.setProxima(proxima);
             if(Constante.BEBIDA.name().equals(tipoIngesta)){
                 persistenciaLocal.setBebida(ingesta);
             }else {
@@ -117,6 +124,7 @@ public class EditarIngestaActivity extends AppCompatActivity {
     }
 
     private void setAlarma() {
+        Log.i(TAG,"Seteando alarma");
         alarmaService.eliminarAlarmaSiExiste(Constante.MEDICAMENTO.name().equals(tipoIngesta)?Constante.MEDICAMENTO:Constante.BEBIDA);
         Usuario usuario = persistenciaLocal.getUsuario();
         alarmaService.crearAlarma(Constante.MEDICAMENTO.name().equals(tipoIngesta)?Constante.MEDICAMENTO:Constante.BEBIDA,

@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.grupo10.asistenteingesta.R;
 
 public class ValidarSmsActivity extends AppCompatActivity {
-
+    private final static String TAG = "ACT_VALIDAR_SMS";
     private String codigoSMS;
     private TextView txtCodigo;
     private Button btnReintentar;
@@ -29,7 +29,7 @@ public class ValidarSmsActivity extends AppCompatActivity {
         btnVerificar = findViewById(R.id.btnVerificar);
         btnReintentar.setOnClickListener(botonesListeners);
         btnVerificar.setOnClickListener(botonesListeners);
-        Log.i("Ejecuto","Ejecuto onCreate");
+        Log.i(TAG,"Ejecuto onCreate");
 
     }
 
@@ -46,12 +46,14 @@ public class ValidarSmsActivity extends AppCompatActivity {
         if(codigo.isEmpty()){
             mensaje = "Debe ingresar el codigo que llegó por sms";
         }else if(codigoSMS.equals(codigo) || "1234".equals(codigo)){
+            Log.i(TAG,"Codigo correcto");
             Intent intent = new Intent(v.getContext(), LoginActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             return;
         }else{
             mensaje = "El codigo es incorrecto.";
+            Log.i(TAG,"Codigo incorrecto");
         }
         txtCodigo.setError(mensaje);
     }

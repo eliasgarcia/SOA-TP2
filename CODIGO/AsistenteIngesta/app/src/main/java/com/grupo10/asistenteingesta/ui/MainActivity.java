@@ -4,10 +4,14 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.grupo10.asistenteingesta.R;
+import com.grupo10.asistenteingesta.background.MinutosRestantesService;
 import com.grupo10.asistenteingesta.servicios.AlarmaService;
 import com.grupo10.asistenteingesta.util.Constante;
 import com.grupo10.asistenteingesta.modelo.EstadoIngesta;
@@ -30,6 +35,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private final static String TAG = "ACT_MAIN";
     private TextView lblMedicamentoNombre;
     private TextView lblMedicamentoDistancia;
     private TextView lblBebidaNombre;
@@ -42,13 +48,19 @@ public class MainActivity extends AppCompatActivity {
     private TableLayout tabla;
     private static PersistenciaLocal persistenciaLocal;
     private AlarmaService alarmaService;
-
+    private TextView lblTiempoRestanteBebida;
+    private TextView lblTiempoRestanteMedicamento;
+    private Intent intentTiempoRestanteService;
+    private ReceptorTiempoRestante receiverTiempoRestante = new ReceptorTiempoRestante();
+    public IntentFilter filtroTiempoRestante;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         lblMedicamentoDistancia = findViewById(R.id.lblMedicamentoDistancia);
         lblMedicamentoNombre = findViewById(R.id.lblMedicamentoNombre);
+        lblTiempoRestanteBebida = findViewById(R.id.lblTiempoRestanteBebida);
+        lblTiempoRestanteMedicamento = findViewById(R.id.lblTiempoRestanteMedicamento);
         btnEditarMedicamento = findViewById(R.id.btnEditarMedicamento);
         btnEliminarMedicamento = findViewById(R.id.btnEliminarMedicamento);
         btnEditarMedicamento.setOnClickListener(botonesListeners);
@@ -65,6 +77,12 @@ public class MainActivity extends AppCompatActivity {
         tabla = findViewById(R.id.table);
         persistenciaLocal = persistenciaLocal.getInstancia(this);
         alarmaService = alarmaService.getInstance(this);
+        intentTiempoRestanteService = new Intent(this, MinutosRestantesService.class);
+        startService(intentTiempoRestanteService);
+        configurarBroadcastRececiver();
+        lblTiempoRestanteBebida.setText("");
+        lblTiempoRestanteMedicamento.setText("");
+        Log.i(TAG,"Ejecuto onCreate");
     }
 
     private View.OnClickListener botonesListeners = new View.OnClickListener() {
@@ -121,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setTabla() {
+        Log.i(TAG,"Dibujando tabla");
         Historial historial = persistenciaLocal.getHistorial();
         List<EstadoIngesta> ingestas;
         if (historial != null) {
@@ -173,6 +192,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void mostrarAlertaEliminacion(Constante tipoIngesta) {
+        Log.i(TAG,"Alerta eliminacion");
         Ingesta ingesta;
         if (Constante.BEBIDA.equals(tipoIngesta)) {
             ingesta = persistenciaLocal.getBebida();
@@ -191,12 +211,16 @@ public class MainActivity extends AppCompatActivity {
                 switch (which) {
                     case DialogInterface.BUTTON_POSITIVE:
                         if (Constante.BEBIDA.equals(tipoIngesta)) {
+                            Log.i(TAG,"Eliminando alarma: " + ingesta.getNombre());
                             alarmaService.eliminarAlarmaSiExiste(Constante.BEBIDA);
                             persistenciaLocal.eliminarBebida();
+                            lblTiempoRestanteBebida.setText("");
                             setBebida();
                         } else {
+                            Log.i(TAG,"Eliminando alarma: " + ingesta.getNombre());
                             alarmaService.eliminarAlarmaSiExiste(Constante.MEDICAMENTO);
                             persistenciaLocal.eliminarMedicamento();
+                            lblTiempoRestanteMedicamento.setText("");
                             setMedicamento();
                         }
                         break;
@@ -210,5 +234,35 @@ public class MainActivity extends AppCompatActivity {
         alertDialog.setButton(Dialog.BUTTON_POSITIVE, "ACEPTAR", dialogClickListener);
         alertDialog.setButton(Dialog.BUTTON_NEGATIVE, "CANCELAR", dialogClickListener);
         alertDialog.show();
+    }
+
+    private void configurarBroadcastRececiver(){
+        Log.i(TAG,"Configurando Broadcastreceiver de tiempo restante de alarma");
+        filtroTiempoRestante = new IntentFilter(Constante.RECEIVER_TIEMPO_RESTANTE.name());
+        filtroTiempoRestante.addCategory(Intent.CATEGORY_DEFAULT);
+        registerReceiver(receiverTiempoRestante, filtroTiempoRestante);
+    }
+
+    public class ReceptorTiempoRestante  extends BroadcastReceiver{
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Bundle bundle = intent.getExtras();
+            lblTiempoRestanteMedicamento.setText("");
+            lblTiempoRestanteBebida.setText("");
+            if(bundle==null){
+                return;
+            }
+            Log.i(TAG,"Tiempo restante Receiver - actualizando tiempo");
+            Integer tiempoRestanteMedicamento = bundle.getInt(Constante.TIEMPO_RESTANTE_MEDICAMENTO.name());
+            Integer tiempoRestanteBebida = bundle.getInt(Constante.TIEMPO_RESTANTE_BEBIDA.name());
+            if(tiempoRestanteMedicamento!=null && tiempoRestanteMedicamento>0){
+                lblTiempoRestanteMedicamento.setText("Sonará en: " + tiempoRestanteMedicamento+ " minutos");
+            }
+            if(tiempoRestanteBebida!=null && tiempoRestanteBebida>0){
+                lblTiempoRestanteBebida.setText("Sonará en: " + tiempoRestanteBebida + " minutos");
+
+            }
+        }
     }
 }

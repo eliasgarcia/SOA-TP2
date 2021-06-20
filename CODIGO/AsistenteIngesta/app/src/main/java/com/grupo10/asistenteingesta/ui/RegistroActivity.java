@@ -34,8 +34,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RegistroActivity extends AppCompatActivity {
-
-    public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
+    private final static String TAG = "ACT_LOGIN";
+    private static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
     private EditText txtNombre;
     private EditText txtApellido;
@@ -65,7 +65,7 @@ public class RegistroActivity extends AppCompatActivity {
         persistenciaLocal = persistenciaLocal.getInstancia(this);
         internetStatus = internetStatus.getInstance(this);
 
-        Log.i("Ejecuto","Ejecuto onCreate");
+        Log.i(TAG,"Ejecuto onCreate");
     }
 
     private View.OnClickListener botonesListeners = new View.OnClickListener()
@@ -133,6 +133,7 @@ public class RegistroActivity extends AppCompatActivity {
     }
     private void registrarUsuario(){
         if(!internetStatus.isConnected()){
+            Log.i(TAG,"No hay acceso a internet");
             return;
         }
         progressBar.setVisibility(View.VISIBLE);
@@ -175,6 +176,7 @@ public class RegistroActivity extends AppCompatActivity {
         try {
             ErrorDTO error = JsonConverter.getError(response.errorBody().string());
             Toast.makeText(RegistroActivity.this, error.getMsg(), Toast.LENGTH_LONG).show();
+            Log.i(TAG,"Registro no exitoso - " + error.getMsg());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -186,6 +188,7 @@ public class RegistroActivity extends AppCompatActivity {
     }
 
     private void guardarUsuario(RegistroResponse loginResponse, UsuarioDTO usuarioDTO){
+        Log.i(TAG,"Guardando usuario nuevo");
         Usuario usuario = new Usuario();
         usuario.setEmail(usuarioDTO.getEmail());
         usuario.setToken(loginResponse.getToken());

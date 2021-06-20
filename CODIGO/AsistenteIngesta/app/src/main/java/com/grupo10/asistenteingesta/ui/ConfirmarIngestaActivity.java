@@ -12,6 +12,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -31,6 +32,7 @@ import java.util.List;
 
 public class ConfirmarIngestaActivity extends AppCompatActivity {
 
+    private final static String TAG = "ACT_CONFIRMAR_INGESTA";
     private static final int UMBRAL_SHAKE = 30;
     private TextView lblTipoIngestaConfirmar;
     private TextView lblIngestaConfirmaNombre;
@@ -49,6 +51,7 @@ public class ConfirmarIngestaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmar_ingesta);
+        Log.i(TAG,"Ejecuto onCreate");
 
         lblTipoIngestaConfirmar = findViewById(R.id.lblTipoIngestaConfirmar);
         lblIngestaConfirmaNombre = findViewById(R.id.lblIngestaNombreConfirmar);
@@ -71,6 +74,7 @@ public class ConfirmarIngestaActivity extends AppCompatActivity {
     }
 
     private void sonarAlarma(){
+        Log.i(TAG,"Sonar alarma");
         if(Constante.MEDICAMENTO.name().equals(tipoIngesta)){
             mediaPlayer = MediaPlayer.create(this, R.raw.sonido_sirena);
         }else{
@@ -94,7 +98,8 @@ public class ConfirmarIngestaActivity extends AppCompatActivity {
                     float y = sensorEvent.values[1];
                     float z = sensorEvent.values[2];
                     if (x > UMBRAL_SHAKE || y > UMBRAL_SHAKE || z > UMBRAL_SHAKE) {
-                        Toast.makeText(ConfirmarIngestaActivity.this, "SHAKEEEEE", Toast.LENGTH_LONG).show();
+                        Log.i(TAG,"Shake detectado");
+                        Toast.makeText(ConfirmarIngestaActivity.this, "Shake detectado.", Toast.LENGTH_SHORT).show();
                         sensorManager.unregisterListener(sensorListener);
                         confirmaIngesta();
                         startActivity(intent);
@@ -120,12 +125,14 @@ public class ConfirmarIngestaActivity extends AppCompatActivity {
             switch (v.getId())
             {
                 case R.id.btnConfirmaIngesta:
+                    Log.i(TAG,"Confirma ingesta");
                     bloquearComponenterPantalla();
                     confirmaIngesta();
                     startActivity(intent);
                     finish();
                     break;
                 case R.id.btnRechazaIngesta:
+                    Log.i(TAG,"Rechaza inngesta");
                     bloquearComponenterPantalla();
                     rechazaIngesta();
                     startActivity(intent);

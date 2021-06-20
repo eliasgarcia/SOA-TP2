@@ -18,6 +18,7 @@ import androidx.core.app.NotificationCompat;
 import com.grupo10.asistenteingesta.R;
 import com.grupo10.asistenteingesta.modelo.EstadoIngesta;
 import com.grupo10.asistenteingesta.modelo.Historial;
+import com.grupo10.asistenteingesta.modelo.Ingesta;
 import com.grupo10.asistenteingesta.servicios.PersistenciaLocal;
 import com.grupo10.asistenteingesta.util.Constante;
 import com.grupo10.asistenteingesta.ui.ConfirmarIngestaActivity;
@@ -30,9 +31,9 @@ import static android.content.Context.SENSOR_SERVICE;
 
 
 public class LecturaSensorAsynctask extends AsyncTask<Void, Void, Void> {
+    private final static String TAG = "AST_LECTURA_SENSOR";
     private SensorManager sensorManager;
     private Float lux;
-    //private Float proximidad;
     private Context mContext;
     private String email;
     private String ingesta;
@@ -42,12 +43,12 @@ public class LecturaSensorAsynctask extends AsyncTask<Void, Void, Void> {
     public static int NOTIFICATION_ID = 1;
     private static PersistenciaLocal persistenciaLocal;
 
-
     public LecturaSensorAsynctask(Context context, String email, String ingesta) {
         super();
         this.mContext = context;
         this.email = email;
         this.ingesta = ingesta;
+        Log.i(TAG,"Inicializando variables");
     }
 
     private SensorEventListener sensorListener = new SensorEventListener() {
@@ -55,16 +56,13 @@ public class LecturaSensorAsynctask extends AsyncTask<Void, Void, Void> {
         public void onSensorChanged(SensorEvent sensorEvent) {
             synchronized (this) {
                 float valor = sensorEvent.values[0];
-                if (lux != null /*&& proximidad != null*/) {
+                if (lux != null) {
+                    Log.i(TAG,"unregisterListener del sensor");
                     sensorManager.unregisterListener(sensorListener);
                 }
                 if (sensorEvent.sensor.getType() == Sensor.TYPE_LIGHT) {
                     lux = valor;
                 }
-               /* if (sensorEvent.sensor.getType() == Sensor.TYPE_PROXIMITY) {
-                    proximidad = valor;
-                }
-                */
             }
         }
 
@@ -76,15 +74,15 @@ public class LecturaSensorAsynctask extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected Void doInBackground(Void... voids) {
+        Log.i(TAG,"registerListener del sensor");
         sensorManager.registerListener(sensorListener, sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT), SensorManager.SENSOR_DELAY_NORMAL);
-        //sensorManager.registerListener(sensorListener, sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY), SensorManager.SENSOR_DELAY_NORMAL);
         return null;
     }
 
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-        if (lux > 1 /*&& proximidad < 2*/) {
-            Log.i("SensorLuzAsync", "Sonar Alarma");
+        if (lux > 1) {
+            Log.i(TAG, "Sonar Alarma");
             Intent i = new Intent();
             i.setClass(mContext, ConfirmarIngestaActivity.class);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -92,11 +90,16 @@ public class LecturaSensorAsynctask extends AsyncTask<Void, Void, Void> {
             i.putExtra(Constante.TIPO_INGESTA.name(), ingesta);
             mContext.startActivity(i);
         } else {
-            //Log.i("SensorLuzService", "Es de noche. Luz:" + lux); //+ ",prox:" + proximidad);
+            Log.i(TAG, "No sonar alarma porue es de noche. Solo notificación.");
             guardarEstadoIngesta();
             notificarAutoRechazoAlarma();
-            Toast.makeText(mContext, "Es de noche. Luz:" + lux/* + ",prox:" + proximidad*/, Toast.LENGTH_LONG).show();
+            Toast.makeText(mContext, "Es de noche. Luz:" + lux, Toast.LENGTH_LONG).show();
         }
+        Ingesta bebida = persistenciaLocal.getBebida();
+        Calendar proxima = Calendar.getInstance();
+        proxima.add(Calendar.MINUTE,bebida.getDistancia());
+        bebida.setProxima(proxima);
+        persistenciaLocal.setBebida(bebida);
     }
 
     @Override
@@ -108,6 +111,7 @@ public class LecturaSensorAsynctask extends AsyncTask<Void, Void, Void> {
     }
 
     private void notificarAutoRechazoAlarma(){
+        Log.i(TAG, "Creando notificación");
         notificationManager = (NotificationManager) mContext.getSystemService(Context. NOTIFICATION_SERVICE ) ;
         NotificationChannel notificationChannel = new NotificationChannel( NOTIFICATION_CHANNEL_ID , "NOTIFICATION_CHANNEL_NAME" , NotificationManager. IMPORTANCE_HIGH) ;
         notificationManager.createNotificationChannel(notificationChannel) ;
@@ -125,6 +129,7 @@ public class LecturaSensorAsynctask extends AsyncTask<Void, Void, Void> {
     }
 
     private void guardarEstadoIngesta(){
+        Log.i(TAG, "Guardando estado de ingesta");
         Historial historial = persistenciaLocal.getHistorial();
         List<EstadoIngesta> ingestas;
         EstadoIngesta estadoIngesta;

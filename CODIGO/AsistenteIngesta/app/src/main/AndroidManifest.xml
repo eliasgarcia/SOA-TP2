@@ -18,7 +18,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.LecturasSensorActivity"></activity>
+        <service
+            android:name=".background.MinutosRestantesService"
+            android:enabled="true"
+            android:exported="true"></service>
+
+        <activity android:name=".ui.LecturasSensorActivity" />
 
         <receiver
             android:name=".broadcast.AlarmaReceiver"

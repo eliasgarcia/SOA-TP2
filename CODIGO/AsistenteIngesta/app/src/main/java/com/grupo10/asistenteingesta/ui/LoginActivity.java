@@ -32,7 +32,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
-    public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
+
+    private final static String TAG = "ACT_LOGIN";
+    private static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
     private Button bRegistrarse;
     private Button bLogin;
@@ -56,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
         loginClient = LoginClientBuilder.getClient();
         persistenciaLocal = persistenciaLocal.getInstancia(this);
         internetStatus = internetStatus.getInstance(this);
-        Log.i("Ejecuto","Ejecuto onCreate");
+        Log.i(TAG,"Ejecuto onCreate");
         setListeners();
     }
 
@@ -117,6 +119,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void login(){
         if(!internetStatus.isConnected()){
+            Log.i(TAG,"No hay acceso a internet");
             return;
         }
         progressBar.setVisibility(View.VISIBLE);
@@ -132,7 +135,7 @@ public class LoginActivity extends AppCompatActivity {
                                  loginNoExitoso(response);
                                  return;
                              }
-                             Toast.makeText(LoginActivity.this, "Login Exitoso", Toast.LENGTH_LONG).show();
+                             Log.i(TAG,"Login exitoso");
                              guardarUsuario(response.body(),loginDTO);
                              abrirMainActivity();
                          }
@@ -157,6 +160,7 @@ public class LoginActivity extends AppCompatActivity {
             ErrorDTO error = JsonConverter.getError(response.errorBody().string());
             txtContrasenia.setError("Contraseña no válida.");
             Toast.makeText(LoginActivity.this, error.getMsg(), Toast.LENGTH_LONG).show();
+            Log.i(TAG,"Login no exitoso - " + error.getMsg());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -169,6 +173,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void guardarUsuario(LoginResponse loginResponse, LoginDTO loginDTO){
+        Log.i(TAG,"Guardando usuario");
         //persistenciaLocal.limpiar();
         Usuario usuario = new Usuario();
         usuario.setEmail(loginDTO.getEmail());

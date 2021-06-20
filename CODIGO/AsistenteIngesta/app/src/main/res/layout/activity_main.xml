@@ -58,8 +58,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="354dp"
-        android:layout_height="63dp"
+        android:layout_width="349dp"
+        android:layout_height="82dp"
         android:layout_marginBottom="32dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
@@ -68,8 +68,8 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
-            android:layout_width="251dp"
-            android:layout_height="match_parent"
+            android:layout_width="246dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
@@ -92,6 +92,15 @@
                 android:layout_height="20dp"
                 android:layout_marginLeft="20sp"
                 android:text="Distancia: -" />
+
+            <TextView
+                android:id="@+id/lblTiempoRestanteBebida"
+                android:layout_width="177dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20sp"
+                android:text="Sonará en:"
+                android:textColor="#E53935" />
+
         </LinearLayout>
 
         <ImageButton
@@ -111,8 +120,9 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="354dp"
-        android:layout_height="59dp"
+        android:id="@+id/layoutMedicamento"
+        android:layout_width="353dp"
+        android:layout_height="80dp"
         android:layout_marginBottom="16dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
@@ -147,6 +157,15 @@
                 android:layout_height="18dp"
                 android:layout_marginLeft="20sp"
                 android:text="Distancia: -" />
+
+            <TextView
+                android:id="@+id/lblTiempoRestanteMedicamento"
+                android:layout_width="182dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20sp"
+                android:text="Sonará en:"
+                android:textColor="#E53935" />
+
         </LinearLayout>
 
         <ImageButton

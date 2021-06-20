@@ -26,7 +26,7 @@ import com.grupo10.asistenteingesta.R;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class EnviarSmsActivity extends AppCompatActivity {
-
+    private final static String TAG = "ACT_ENVIAR_SMS";
     private static final int REQUEST_PERMISSION_SEND_SMS = 1;
     private String  codigoSMS;
     private final static int MIN_CODE = 100000;
@@ -49,7 +49,7 @@ public class EnviarSmsActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.pgbEnviarSms);
         progressBar.setVisibility(View.INVISIBLE);
         txtCargaBateria = findViewById(R.id.txtBateriaCarga);
-        Log.i("Ejecuto","Ejecuto onCreate");
+        Log.i(TAG,"Ejecuto onCreate");
         mostrarDatosBateria();
     }
 
@@ -79,6 +79,7 @@ public class EnviarSmsActivity extends AppCompatActivity {
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
                     WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
             enviarSms();
+            Log.i(TAG,"Envió SMS");
             abrirActivityValidarSms();
         }
     }
@@ -125,7 +126,7 @@ public class EnviarSmsActivity extends AppCompatActivity {
 
     private void generarCodigo(){
         codigoSMS = String.valueOf(ThreadLocalRandom.current().nextInt(MIN_CODE, MAX_CODE ));
-        Log.i("codigoSMS",codigoSMS);
+        Log.i(TAG,"Codigo SMS: " +codigoSMS);
     }
 
     @Override
@@ -133,11 +134,11 @@ public class EnviarSmsActivity extends AppCompatActivity {
         switch (requestCode){
             case REQUEST_PERMISSION_SEND_SMS:
                 if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                    Log.i("SMS Permiso","Aceptado");
+                    Log.i(TAG,"Permiso SMS Aceptado");
                     enviarSms();
                     abrirActivityValidarSms();
                 }else{
-                    Log.i("SMS Permiso","No aceptado");
+                    Log.i(TAG,"Permiso SMS NO Aceptado");
                     Toast.makeText(this, "Debe aceptar los permisos para continuar.", Toast.LENGTH_LONG).show();
                 }
             default:
@@ -146,6 +147,7 @@ public class EnviarSmsActivity extends AppCompatActivity {
     }
 
     private void mostrarDatosBateria(){
+        Log.i(TAG,"Cargando datos bateria");
         IntentFilter iFilterBateria = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
         Intent estadoBateria = this.registerReceiver(null, iFilterBateria);
         int nivel = estadoBateria.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);

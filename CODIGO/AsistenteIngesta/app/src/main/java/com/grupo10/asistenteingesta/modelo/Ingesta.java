@@ -1,9 +1,11 @@
 package com.grupo10.asistenteingesta.modelo;
 
+import java.util.Calendar;
+
 public class Ingesta {
     private String nombre;
     private Integer distancia;
-
+    private Calendar proxima;
 
     public Ingesta(Ingesta ingesta){
         this.nombre = ingesta.nombre;
@@ -26,5 +28,13 @@ public class Ingesta {
 
     public void setDistancia(Integer distancia) {
         this.distancia = distancia;
+    }
+
+    public Calendar getProxima() {
+        return proxima;
+    }
+
+    public void setProxima(Calendar proxima) {
+        this.proxima = proxima;
     }
 }
