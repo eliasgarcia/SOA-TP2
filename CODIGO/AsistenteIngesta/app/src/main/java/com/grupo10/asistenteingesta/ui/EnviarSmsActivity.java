@@ -37,6 +37,7 @@ public class EnviarSmsActivity extends AppCompatActivity {
     private Bundle bundle = new Bundle();
     private ProgressBar progressBar;
     private TextView txtCargaBateria;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,8 +60,7 @@ public class EnviarSmsActivity extends AppCompatActivity {
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
     }
 
-    private View.OnClickListener botonesListeners = new View.OnClickListener()
-    {
+    private View.OnClickListener botonesListeners = new View.OnClickListener() {
         public void onClick(View v) {
             switch (v.getId())
             {
@@ -69,7 +69,6 @@ public class EnviarSmsActivity extends AppCompatActivity {
                     break;
                 default:
                     Toast.makeText(getApplicationContext(),"Error en Listener de botones",Toast.LENGTH_LONG).show();
-
             }
         }
     };
@@ -96,7 +95,7 @@ public class EnviarSmsActivity extends AppCompatActivity {
             txtNroCelular.setError("Debe ingresar un nro de celular.");
             esValido = false;
         }else if(txtNroCelular.getText().toString().length()!=10){
-            txtNroCelular.setError("El nro de celular debe tener 8 dígitos.");
+            txtNroCelular.setError("El nro de celular debe tener 10 dígitos.");
             esValido = false;
         }
         return esValido;

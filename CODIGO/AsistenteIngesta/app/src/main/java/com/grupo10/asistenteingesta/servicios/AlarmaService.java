@@ -10,6 +10,9 @@ import com.grupo10.asistenteingesta.broadcast.AlarmaReceiver;
 import com.grupo10.asistenteingesta.util.CodigoIngesta;
 import com.grupo10.asistenteingesta.util.Constante;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 public class AlarmaService {
 
     private static AlarmaService instancia;
@@ -36,16 +39,19 @@ public class AlarmaService {
     }
 
     public void crearAlarma(Constante constante, String email, int frecuencia){
-        long tiempoEnMilis = frecuencia*1000;
+        //long tiempoEnMilis = frecuencia*1000;
         int REQUEST_CODE = Constante.MEDICAMENTO.equals(constante)? CodigoIngesta.MEDICAMENTO.getValue():CodigoIngesta.BEBIDA.getValue();
-
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.add(GregorianCalendar.MINUTE, frecuencia);
         Intent intent = new Intent(context, AlarmaReceiver.class);
         intent.putExtra(Constante.EMAIL.name(), email);
         intent.putExtra(Constante.TIPO_INGESTA.name(), constante.name());
 
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, REQUEST_CODE, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         am = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
-        am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime()
-                + tiempoEnMilis, pendingIntent);
+        //am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+        am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+                1000 * 60 * frecuencia, pendingIntent);
     }
 }
