@@ -4,8 +4,6 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.os.SystemClock;
-
 import com.grupo10.asistenteingesta.broadcast.AlarmaReceiver;
 import com.grupo10.asistenteingesta.util.CodigoIngesta;
 import com.grupo10.asistenteingesta.util.Constante;
@@ -38,8 +36,12 @@ public class AlarmaService {
         am.cancel(pendingIntent);
     }
 
+    /*
+        REQUEST_CODE es el id de la alarma.
+        RTC_WAKEUP:"Activa" el dispositivo a fin de activar el intent pendiente a la "hora especificada".
+    */
+
     public void crearAlarma(Constante constante, String email, int frecuencia){
-        //long tiempoEnMilis = frecuencia*1000;
         int REQUEST_CODE = Constante.MEDICAMENTO.equals(constante)? CodigoIngesta.MEDICAMENTO.getValue():CodigoIngesta.BEBIDA.getValue();
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
@@ -50,7 +52,6 @@ public class AlarmaService {
 
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, REQUEST_CODE, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         am = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
-        //am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
         am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
                 1000 * 60 * frecuencia, pendingIntent);
     }

@@ -65,7 +65,6 @@ public class EditarIngestaActivity extends AppCompatActivity {
                     break;
                 default:
                     Toast.makeText(getApplicationContext(),"Error en Listener de botones",Toast.LENGTH_LONG).show();
-
             }
         }
     };
