@@ -150,8 +150,8 @@ public class RegistroActivity extends AppCompatActivity {
                                  registroNoExitoso(response);
                                  return;
                              }
+                             Log.i(TAG,"Registro exitoso");
                              RegistroResponse registroResponse = response.body();
-                             Toast.makeText(RegistroActivity.this, "Registro Exitoso" +registroResponse.getToken(), Toast.LENGTH_LONG).show();
                              guardarUsuario(response.body(),usuarioDTO);
                              abrirMainActivity();
                          }
@@ -184,6 +184,7 @@ public class RegistroActivity extends AppCompatActivity {
 
     private void abrirMainActivity(){
         Intent intent = new Intent(RegistroActivity.this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
 
