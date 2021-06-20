@@ -22,7 +22,7 @@ public class EditarIngestaActivity extends AppCompatActivity {
 
     private TextView txtTipoIngesta;
     private EditText txtTipoIngestaNombre;
-    private EditText txtTipoIngestaFrecuencia;
+    private EditText txtTipoIngestaDistancia;
     private Button btnGuardarIngesta;
     private Button btnCancelarIngesta;
     private ProgressBar progressBar;
@@ -36,7 +36,7 @@ public class EditarIngestaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_ingesta);
         txtTipoIngestaNombre = findViewById(R.id.txtIngestaNombreNuevo);
-        txtTipoIngestaFrecuencia = findViewById(R.id.txtIngestaFrecuenciaNuevo);
+        txtTipoIngestaDistancia = findViewById(R.id.txtIngestaDistanciaNueva);
         btnCancelarIngesta = findViewById(R.id.btnCancelarIngesta);
         btnGuardarIngesta = findViewById(R.id.btnConfirmarIngesta);
         txtTipoIngesta = findViewById(R.id.txtTipoIngesta);
@@ -73,7 +73,7 @@ public class EditarIngestaActivity extends AppCompatActivity {
         if(camposValidos()){
             activarLoading();
             Ingesta ingesta = new Ingesta();
-            ingesta.setFrecuencia(Integer.parseInt(txtTipoIngestaFrecuencia.getText().toString()));
+            ingesta.setDistancia(Integer.parseInt(txtTipoIngestaDistancia.getText().toString()));
             ingesta.setNombre(txtTipoIngestaNombre.getText().toString());
             if(Constante.BEBIDA.name().equals(tipoIngesta)){
                 persistenciaLocal.setBebida(ingesta);
@@ -87,8 +87,8 @@ public class EditarIngestaActivity extends AppCompatActivity {
 
     private boolean camposValidos(){
         boolean esValido = true;
-        if(TextUtils.isEmpty(txtTipoIngestaFrecuencia.getText())){
-            txtTipoIngestaFrecuencia.setError("Debe ingresar una frecuencia en minutos. Ej: 2");
+        if(TextUtils.isEmpty(txtTipoIngestaDistancia.getText())){
+            txtTipoIngestaDistancia.setError("Debe ingresar una distancia en minutos. Ej: 2");
             esValido = false;
         }
         if(TextUtils.isEmpty(txtTipoIngestaNombre.getText())){
@@ -106,7 +106,7 @@ public class EditarIngestaActivity extends AppCompatActivity {
         }else{
             ingesta = persistenciaLocal.getMedicamento();
         }
-        txtTipoIngestaFrecuencia.setText(ingesta!=null?ingesta.getFrecuencia().toString():"");
+        txtTipoIngestaDistancia.setText(ingesta!=null?ingesta.getDistancia().toString():"");
         txtTipoIngestaNombre.setText(ingesta!=null?ingesta.getNombre():"");
     }
 
@@ -120,6 +120,6 @@ public class EditarIngestaActivity extends AppCompatActivity {
         alarmaService.eliminarAlarmaSiExiste(Constante.MEDICAMENTO.name().equals(tipoIngesta)?Constante.MEDICAMENTO:Constante.BEBIDA);
         Usuario usuario = persistenciaLocal.getUsuario();
         alarmaService.crearAlarma(Constante.MEDICAMENTO.name().equals(tipoIngesta)?Constante.MEDICAMENTO:Constante.BEBIDA,
-                usuario.getEmail(),Integer.valueOf(txtTipoIngestaFrecuencia.getText().toString()));
+                usuario.getEmail(),Integer.valueOf(txtTipoIngestaDistancia.getText().toString()));
     }
 }

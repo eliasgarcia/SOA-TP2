@@ -3,9 +3,7 @@ package com.grupo10.asistenteingesta.ui;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlarmManager;
 import android.app.Dialog;
-import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -33,9 +31,9 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private TextView lblMedicamentoNombre;
-    private TextView lblMedicamentoFrecuencia;
+    private TextView lblMedicamentoDistancia;
     private TextView lblBebidaNombre;
-    private TextView lblBebidaFrecuencia;
+    private TextView lblBebidaDistancia;
     private ImageButton btnEditarMedicamento;
     private ImageButton btnEliminarMedicamento;
     private ImageButton btnEditarBebida;
@@ -49,14 +47,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        lblMedicamentoFrecuencia = findViewById(R.id.lblMedicamentoFrecuencia);
+        lblMedicamentoDistancia = findViewById(R.id.lblMedicamentoDistancia);
         lblMedicamentoNombre = findViewById(R.id.lblMedicamentoNombre);
         btnEditarMedicamento = findViewById(R.id.btnEditarMedicamento);
         btnEliminarMedicamento = findViewById(R.id.btnEliminarMedicamento);
         btnEditarMedicamento.setOnClickListener(botonesListeners);
         btnEliminarMedicamento.setOnClickListener(botonesListeners);
 
-        lblBebidaFrecuencia = findViewById(R.id.lblBebidaFrecuencia);
+        lblBebidaDistancia = findViewById(R.id.lblBebidaDistancia);
         lblBebidaNombre = findViewById(R.id.lblBebidaNombre);
         btnEditarBebida = findViewById(R.id.btnEditarBebida);
         btnEliminarBebida = findViewById(R.id.btnEliminarBebida);
@@ -102,23 +100,23 @@ public class MainActivity extends AppCompatActivity {
 
     private void setMedicamento() {
         Ingesta medicamento = persistenciaLocal.getMedicamento();
-        String nombre = "Nombre: -", frecuencia = "Frecuencia: -";
+        String nombre = "Nombre: -", distancia = "Distancia: -";
         if (medicamento != null) {
             nombre = "Nombre: " + medicamento.getNombre();
-            frecuencia = "Frecuencia: " + medicamento.getFrecuencia().toString();
+            distancia = "Distancia: " + medicamento.getDistancia().toString() + " minutos";
         }
-        lblMedicamentoFrecuencia.setText(frecuencia);
+        lblMedicamentoDistancia.setText(distancia);
         lblMedicamentoNombre.setText(nombre);
     }
 
     private void setBebida() {
         Ingesta bebida = persistenciaLocal.getBebida();
-        String nombre = "Nombre: -", frecuencia = "Frecuencia: -";
+        String nombre = "Nombre: -", distancia = "Distancia: -";
         if (bebida != null) {
             nombre = "Nombre: " + bebida.getNombre();
-            frecuencia = "Frecuencia: " + bebida.getFrecuencia().toString();
+            distancia = "Distancia: " + bebida.getDistancia().toString() + " minutos";
         }
-        lblBebidaFrecuencia.setText(frecuencia);
+        lblBebidaDistancia.setText(distancia);
         lblBebidaNombre.setText(nombre);
     }
 
@@ -132,15 +130,18 @@ public class MainActivity extends AppCompatActivity {
         }
         tabla.removeAllViews();
         TableRow tr1 = new TableRow(this);
-        tr1.addView(getCell("TIPO", Color.rgb(192, 192, 192)), getTableRowParams());
-        tr1.addView(getCell("NOMBRE", Color.rgb(192, 192, 192)), getTableRowParams());
-        tr1.addView(getCell("FRECUENCIA", Color.rgb(192, 192, 192)), getTableRowParams());
+        tr1.addView(getCell("Nombre", Color.rgb(192, 192, 192)), getTableRowParams());
+        tr1.addView(getCell("Cada(m)", Color.rgb(192, 192, 192)), getTableRowParams());
+        tr1.addView(getCell("Tomó", Color.rgb(192, 192, 192)), getTableRowParams());
+        tr1.addView(getCell("Hora", Color.rgb(192, 192, 192)), getTableRowParams());
+
         tabla.addView(tr1, getTableRowParams());
         for (EstadoIngesta ingesta : ingestas) {
             TableRow tr = new TableRow(this);
-            tr.addView(getCell(ingesta.getEstado().toString(), Color.rgb(153, 255, 153)), getTableRowParams());
             tr.addView(getCell(ingesta.getNombre(), Color.rgb(153, 255, 153)), getTableRowParams());
-            tr.addView(getCell(ingesta.getFrecuencia().toString(), Color.rgb(153, 255, 153)), getTableRowParams());
+            tr.addView(getCell(ingesta.getDistancia().toString(), Color.rgb(153, 255, 153)), getTableRowParams());
+            tr.addView(getCell(ingesta.getRealizado()?"Si":"No", Color.rgb(153, 255, 153)), getTableRowParams());
+            tr.addView(getCell(ingesta.getHoraFormateada(), Color.rgb(153, 255, 153)), getTableRowParams());
             tabla.addView(tr, getTableRowParams());
         }
     }

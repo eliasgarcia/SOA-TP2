@@ -15,16 +15,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.421"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblIngestaFrecuenciaConfirmar" />
+        app:layout_constraintTop_toBottomOf="@+id/lblIngestaDistanciaConfirmar" />
 
     <Button
         android:id="@+id/btnConfirmaIngesta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="126dp"
+        android:layout_height="46dp"
         android:layout_marginTop="36dp"
+        android:background="#F228D847"
         android:text="Si"
         app:layout_constraintEnd_toStartOf="@+id/btnRechazaIngesta"
-        app:layout_constraintHorizontal_bias="0.446"
+        app:layout_constraintHorizontal_bias="0.727"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
@@ -34,6 +35,7 @@
         android:layout_height="51dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="64dp"
+        android:background="#F50202"
         android:text="NO"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView20" />
@@ -51,11 +53,11 @@
         app:layout_constraintTop_toBottomOf="@+id/lblTipoIngestaConfirmar" />
 
     <TextView
-        android:id="@+id/lblIngestaFrecuenciaConfirmar"
+        android:id="@+id/lblIngestaDistanciaConfirmar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Frecuencia: -"
+        android:text="Distancia: -"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.218"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,6 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Podes hacer un SHAKE"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.06"
@@ -80,6 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="TIPO"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

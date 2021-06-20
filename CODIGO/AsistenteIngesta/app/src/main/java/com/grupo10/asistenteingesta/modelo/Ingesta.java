@@ -2,12 +2,12 @@ package com.grupo10.asistenteingesta.modelo;
 
 public class Ingesta {
     private String nombre;
-    private Integer frecuencia;
+    private Integer distancia;
 
 
     public Ingesta(Ingesta ingesta){
         this.nombre = ingesta.nombre;
-        this.frecuencia = ingesta.frecuencia;
+        this.distancia = ingesta.distancia;
     }
 
     public Ingesta(){}
@@ -20,11 +20,11 @@ public class Ingesta {
         this.nombre = nombre;
     }
 
-    public Integer getFrecuencia() {
-        return frecuencia;
+    public Integer getDistancia() {
+        return distancia;
     }
 
-    public void setFrecuencia(Integer frecuencia) {
-        this.frecuencia = frecuencia;
+    public void setDistancia(Integer distancia) {
+        this.distancia = distancia;
     }
 }

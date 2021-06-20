@@ -26,6 +26,7 @@ import com.grupo10.asistenteingesta.modelo.Ingesta;
 import com.grupo10.asistenteingesta.servicios.PersistenciaLocal;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class ConfirmarIngestaActivity extends AppCompatActivity {
@@ -33,7 +34,7 @@ public class ConfirmarIngestaActivity extends AppCompatActivity {
     private static final int UMBRAL_SHAKE = 30;
     private TextView lblTipoIngestaConfirmar;
     private TextView lblIngestaConfirmaNombre;
-    private TextView lblIngestaConfirmaFecuencia;
+    private TextView lblIngestaConfirmaDistancia;
     private Button btnConfirmarIngesta;
     private Button btnRechazaIngesta;
     private static PersistenciaLocal persistenciaLocal;
@@ -51,7 +52,7 @@ public class ConfirmarIngestaActivity extends AppCompatActivity {
 
         lblTipoIngestaConfirmar = findViewById(R.id.lblTipoIngestaConfirmar);
         lblIngestaConfirmaNombre = findViewById(R.id.lblIngestaNombreConfirmar);
-        lblIngestaConfirmaFecuencia = findViewById(R.id.lblIngestaFrecuenciaConfirmar);
+        lblIngestaConfirmaDistancia = findViewById(R.id.lblIngestaDistanciaConfirmar);
         btnConfirmarIngesta = findViewById(R.id.btnConfirmaIngesta);
         btnRechazaIngesta = findViewById(R.id.btnRechazaIngesta);;
         btnConfirmarIngesta.setOnClickListener(botonesListeners);
@@ -140,7 +141,7 @@ public class ConfirmarIngestaActivity extends AppCompatActivity {
     private void cargarLabels(){
         lblTipoIngestaConfirmar.setText(bundle.getString(Constante.TIPO_INGESTA.name()));
         lblIngestaConfirmaNombre.setText("Nombre: " + ingesta.getNombre());
-        lblIngestaConfirmaFecuencia.setText("Frecuencia: " + ingesta.getFrecuencia());
+        lblIngestaConfirmaDistancia.setText("Distancia: " + ingesta.getDistancia());
     }
 
 
@@ -166,7 +167,7 @@ public class ConfirmarIngestaActivity extends AppCompatActivity {
         }else{
             ingestas = new ArrayList<>();
         }
-        estadoIngesta = new EstadoIngesta(ingesta, estado);
+        estadoIngesta = new EstadoIngesta(ingesta, estado, Calendar.getInstance());
         ingestas.add(estadoIngesta);
         historial.setIngestas(ingestas);
         persistenciaLocal.setHistorial(historial);

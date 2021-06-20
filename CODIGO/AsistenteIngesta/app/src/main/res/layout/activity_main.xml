@@ -87,11 +87,11 @@
                 android:text="Nombre: -" />
 
             <TextView
-                android:id="@+id/lblBebidaFrecuencia"
+                android:id="@+id/lblBebidaDistancia"
                 android:layout_width="177dp"
                 android:layout_height="20dp"
                 android:layout_marginLeft="20sp"
-                android:text="Frecuencia: -" />
+                android:text="Distancia: -" />
         </LinearLayout>
 
         <ImageButton
@@ -142,11 +142,11 @@
                 android:text="Nombre: -" />
 
             <TextView
-                android:id="@+id/lblMedicamentoFrecuencia"
+                android:id="@+id/lblMedicamentoDistancia"
                 android:layout_width="180dp"
                 android:layout_height="18dp"
                 android:layout_marginLeft="20sp"
-                android:text="Frecuencia: -" />
+                android:text="Distancia: -" />
         </LinearLayout>
 
         <ImageButton

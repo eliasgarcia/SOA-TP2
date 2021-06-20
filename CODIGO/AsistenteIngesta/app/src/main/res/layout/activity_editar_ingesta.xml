@@ -46,12 +46,12 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/txtIngestaFrecuenciaNuevo"
+            android:id="@+id/txtIngestaDistanciaNueva"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30sp"
             android:ems="10"
-            android:hint="Frecuencia"
+            android:hint="Distancia(minutos)"
             android:inputType="number" />
 
         <LinearLayout
