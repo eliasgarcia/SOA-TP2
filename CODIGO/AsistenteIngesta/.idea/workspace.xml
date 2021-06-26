@@ -14,9 +14,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="10160217-b6c8-4e81-8d54-3c1a8b5d241a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/EditarIngestaActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/EditarIngestaActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/util/Constante.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/util/Constante.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,8 +53,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/EditarIngestaActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-145">
-              <caret line="152" column="63" selection-start-line="152" selection-start-column="63" selection-end-line="152" selection-end-column="63" />
+            <state relative-caret-position="163">
+              <caret line="188" column="5" lean-forward="true" selection-start-line="188" selection-start-column="5" selection-end-line="188" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -131,8 +129,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>frec</find>
-      <find>Dist</find>
       <find>configurarBroadcastRececiver</find>
       <find>lblTiempoRestanteMedicamento</find>
       <find>AlarmaReceiver</find>
@@ -161,6 +157,8 @@
       <find>toast</find>
       <find>todo</find>
       <find>clearFlags</find>
+      <find>invisible</find>
+      <find>.visible</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -408,7 +406,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" sideWeight="0.5008881" side_tool="true" weight="0.32955465" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49567723" visible="true" weight="0.17004049" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49567723" visible="true" weight="0.10040486" />
       <window_info id="Structure" order="2" sideWeight="0.50432277" side_tool="true" weight="0.20890689" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -417,7 +415,7 @@
       <window_info id="Resources Explorer" order="7" sideWeight="0.4991119" weight="0.32955465" />
       <window_info id="Capture Tool" order="8" />
       <window_info anchor="bottom" id="Run" order="0" weight="0.4884547" />
-      <window_info active="true" anchor="bottom" id="Logcat" order="1" visible="true" weight="0.27175844" />
+      <window_info active="true" anchor="bottom" id="Logcat" order="1" visible="true" weight="0.06394316" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.3268206" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.42932862" />
       <window_info anchor="bottom" id="Terminal" order="4" weight="0.3285968" />
@@ -550,13 +548,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/EditarIngestaActivity.java</url>
-          <line>237</line>
+          <line>238</line>
           <properties />
           <option name="timeStamp" value="156" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/EditarIngestaActivity.java</url>
-          <line>198</line>
+          <line>199</line>
           <properties />
           <option name="timeStamp" value="157" />
         </line-breakpoint>
@@ -1012,8 +1010,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/grupo10/asistenteingesta/ui/EditarIngestaActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-145">
-          <caret line="152" column="63" selection-start-line="152" selection-start-column="63" selection-end-line="152" selection-end-column="63" />
+        <state relative-caret-position="163">
+          <caret line="188" column="5" lean-forward="true" selection-start-line="188" selection-start-column="5" selection-end-line="188" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

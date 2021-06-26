@@ -169,7 +169,6 @@ public class EditarIngestaActivity extends AppCompatActivity {
         call.enqueue( new Callback<EventoResponse>() {
                           @Override
                           public void onResponse(Call<EventoResponse> call, Response<EventoResponse> response) {
-                              progressBar.setVisibility(View.INVISIBLE);
                               if(!response.isSuccessful()){
                                   registroEventoNoExitoso(response, constante);
                                   return;
@@ -181,6 +180,7 @@ public class EditarIngestaActivity extends AppCompatActivity {
                           @Override
                           public void onFailure(Call<EventoResponse> call, Throwable t) {
                               progressBar.setVisibility(View.INVISIBLE);
+                              getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                               Toast.makeText(EditarIngestaActivity.this, "Fallo. onFailure", Toast.LENGTH_LONG).show();
                           }
                       }
@@ -196,6 +196,7 @@ public class EditarIngestaActivity extends AppCompatActivity {
                 Log.i(TAG, error.getMsg());
                 refrescarJWT();
             }else{
+                progressBar.setVisibility(View.INVISIBLE);
                 getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                 Toast.makeText(EditarIngestaActivity.this, "Error: "+ error.getMsg(), Toast.LENGTH_LONG).show();
             }
@@ -211,7 +212,6 @@ public class EditarIngestaActivity extends AppCompatActivity {
         call.enqueue( new Callback<RefreshTokenResponse>() {
                           @Override
                           public void onResponse(Call<RefreshTokenResponse> call, Response<RefreshTokenResponse> response) {
-                              progressBar.setVisibility(View.INVISIBLE);
                               if(!response.isSuccessful()){
                                   refreshTokenNoExitoso(response);
                                   return;
@@ -227,6 +227,7 @@ public class EditarIngestaActivity extends AppCompatActivity {
                           @Override
                           public void onFailure(Call<RefreshTokenResponse> call, Throwable t) {
                               progressBar.setVisibility(View.INVISIBLE);
+                              getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                               Toast.makeText(EditarIngestaActivity.this, "Fallo. onFailure", Toast.LENGTH_LONG).show();
                           }
                       }
@@ -236,6 +237,7 @@ public class EditarIngestaActivity extends AppCompatActivity {
 
     private void refreshTokenNoExitoso( Response<RefreshTokenResponse> response){
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+        progressBar.setVisibility(View.INVISIBLE);
         try {
             if(response.raw().code() == 400){
                 ErrorDTO error = JsonConverter.getError(response.errorBody().string());
