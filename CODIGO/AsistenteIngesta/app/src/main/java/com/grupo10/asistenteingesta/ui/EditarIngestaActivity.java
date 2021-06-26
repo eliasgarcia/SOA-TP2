@@ -13,13 +13,28 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.grupo10.asistenteingesta.R;
+import com.grupo10.asistenteingesta.client.EventoClient;
+import com.grupo10.asistenteingesta.client.EventoClientBuilder;
+import com.grupo10.asistenteingesta.client.RefreshTokenBuilder;
+import com.grupo10.asistenteingesta.client.RefreshTokenClient;
+import com.grupo10.asistenteingesta.dto.ErrorDTO;
+import com.grupo10.asistenteingesta.dto.EventoDTO;
+import com.grupo10.asistenteingesta.response.EventoResponse;
+import com.grupo10.asistenteingesta.response.RefreshTokenResponse;
 import com.grupo10.asistenteingesta.servicios.AlarmaService;
+import com.grupo10.asistenteingesta.servicios.InternetStatus;
 import com.grupo10.asistenteingesta.util.Constante;
 import com.grupo10.asistenteingesta.modelo.Ingesta;
 import com.grupo10.asistenteingesta.modelo.Usuario;
 import com.grupo10.asistenteingesta.servicios.PersistenciaLocal;
+import com.grupo10.asistenteingesta.util.JsonConverter;
 
+import java.io.IOException;
 import java.util.Calendar;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class EditarIngestaActivity extends AppCompatActivity {
 
@@ -34,6 +49,9 @@ public class EditarIngestaActivity extends AppCompatActivity {
     private Bundle bundle;
     private String tipoIngesta;
     private AlarmaService alarmaService;
+    private InternetStatus internetStatus;
+    private RefreshTokenClient refreshTokenClient;
+    private EventoClient eventoClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +71,9 @@ public class EditarIngestaActivity extends AppCompatActivity {
         tipoIngesta = bundle.getString(Constante.TIPO_INGESTA.name());
         setValoresTipoIngesta();
         alarmaService = alarmaService.getInstance(this);
+        internetStatus = internetStatus.getInstance(this);
+        refreshTokenClient = RefreshTokenBuilder.getClient();
+        eventoClient = EventoClientBuilder.getClient();
         Log.i(TAG,"Ejecuto onCreate");
     }
 
@@ -75,21 +96,30 @@ public class EditarIngestaActivity extends AppCompatActivity {
 
     private void validarYGuardarIngestas(){
         if(camposValidos()){
-            activarLoading();
-            Ingesta ingesta = new Ingesta();
-            ingesta.setDistancia(Integer.parseInt(txtTipoIngestaDistancia.getText().toString()));
-            ingesta.setNombre(txtTipoIngestaNombre.getText().toString());
-            Calendar proxima = Calendar.getInstance();
-            proxima.add(Calendar.MINUTE,ingesta.getDistancia());
-            ingesta.setProxima(proxima);
-            if(Constante.BEBIDA.name().equals(tipoIngesta)){
-                persistenciaLocal.setBebida(ingesta);
-            }else {
-                persistenciaLocal.setMedicamento(ingesta);
+            if(!internetStatus.isConnected()){
+                Log.i(TAG,"No hay acceso a internet. Intente mas tarde");
+                return;
             }
-            setAlarma();
-            finish();
+            activarLoading();
+            registrarEventoEnServidor(Constante.LLAMADO_INICIAL);
         }
+    }
+
+    private void guardarIngesta(){
+        Ingesta ingesta = new Ingesta();
+        ingesta.setDistancia(Integer.parseInt(txtTipoIngestaDistancia.getText().toString()));
+        ingesta.setNombre(txtTipoIngestaNombre.getText().toString());
+        Calendar proxima = Calendar.getInstance();
+        proxima.add(Calendar.MINUTE,ingesta.getDistancia());
+        ingesta.setProxima(proxima);
+        if(Constante.BEBIDA.name().equals(tipoIngesta)){
+            persistenciaLocal.setBebida(ingesta);
+        }else {
+            persistenciaLocal.setMedicamento(ingesta);
+        }
+        Toast.makeText(EditarIngestaActivity.this, "Recordatorio guardado", Toast.LENGTH_LONG).show();
+        setAlarma();
+        finish();
     }
 
     private boolean camposValidos(){
@@ -129,5 +159,91 @@ public class EditarIngestaActivity extends AppCompatActivity {
         Usuario usuario = persistenciaLocal.getUsuario();
         alarmaService.crearAlarma(Constante.MEDICAMENTO.name().equals(tipoIngesta)?Constante.MEDICAMENTO:Constante.BEBIDA,
                 usuario.getEmail(),Integer.valueOf(txtTipoIngestaDistancia.getText().toString()));
+    }
+
+    private void registrarEventoEnServidor(Constante constante){
+        String descripcion = "Nombre: " + txtTipoIngestaNombre.getText().toString() + ";Distancia: " + txtTipoIngestaDistancia.getText().toString();
+        String token = persistenciaLocal.getUsuario().getToken();
+        EventoDTO eventoDTO = new EventoDTO(Constante.TIPO_EVENTO_ALARMA_REGISTRADA.name(), descripcion );
+        Call<EventoResponse> call = eventoClient.registrarEvento("Bearer "+token, eventoDTO);
+        call.enqueue( new Callback<EventoResponse>() {
+                          @Override
+                          public void onResponse(Call<EventoResponse> call, Response<EventoResponse> response) {
+                              progressBar.setVisibility(View.INVISIBLE);
+                              if(!response.isSuccessful()){
+                                  registroEventoNoExitoso(response, constante);
+                                  return;
+                              }
+                              Log.i(TAG,"Registro evento exitoso: " + descripcion);
+                              guardarIngesta();
+                          }
+
+                          @Override
+                          public void onFailure(Call<EventoResponse> call, Throwable t) {
+                              progressBar.setVisibility(View.INVISIBLE);
+                              Toast.makeText(EditarIngestaActivity.this, "Fallo. onFailure", Toast.LENGTH_LONG).show();
+                          }
+                      }
+
+        );
+    }
+
+    private void registroEventoNoExitoso( Response<EventoResponse> response, Constante constante){
+        try {
+            ErrorDTO error = JsonConverter.getError(response.errorBody().string());
+            Log.i(TAG,"Registro evento no exitoso - " + error.getMsg());
+            if(Constante.LLAMADO_INICIAL.equals(constante) && response.raw().code() == 401){
+                Log.i(TAG, error.getMsg());
+                refrescarJWT();
+            }else{
+                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                Toast.makeText(EditarIngestaActivity.this, "Error: "+ error.getMsg(), Toast.LENGTH_LONG).show();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void refrescarJWT(){
+        Log.i(TAG,"Refrescando token");
+        String refresh = persistenciaLocal.getUsuario().getToken_refresh();
+        Call<RefreshTokenResponse> call = refreshTokenClient.actualizarToken("Bearer " + refresh);
+        call.enqueue( new Callback<RefreshTokenResponse>() {
+                          @Override
+                          public void onResponse(Call<RefreshTokenResponse> call, Response<RefreshTokenResponse> response) {
+                              progressBar.setVisibility(View.INVISIBLE);
+                              if(!response.isSuccessful()){
+                                  refreshTokenNoExitoso(response);
+                                  return;
+                              }
+                              Log.i(TAG,"Actualizó Token con éxito");
+                              Usuario usuario = persistenciaLocal.getUsuario();
+                              usuario.setToken(response.body().getToken());
+                              usuario.setToken_refresh(response.body().getTokenRefresh());
+                              persistenciaLocal.setUsuario(usuario);
+                              registrarEventoEnServidor(Constante.LLAMADO_POST_ACTUALIZACION_TOKEN);
+                          }
+
+                          @Override
+                          public void onFailure(Call<RefreshTokenResponse> call, Throwable t) {
+                              progressBar.setVisibility(View.INVISIBLE);
+                              Toast.makeText(EditarIngestaActivity.this, "Fallo. onFailure", Toast.LENGTH_LONG).show();
+                          }
+                      }
+
+        );
+    }
+
+    private void refreshTokenNoExitoso( Response<RefreshTokenResponse> response){
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+        try {
+            if(response.raw().code() == 400){
+                ErrorDTO error = JsonConverter.getError(response.errorBody().string());
+                Toast.makeText(EditarIngestaActivity.this,"Error: " + error.getMsg(), Toast.LENGTH_SHORT).show();
+            }
+            Log.i(TAG,"No actualizó Token con éxito");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
